@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanel\AdminProfileController;
+use App\Http\Controllers\Shop\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,6 @@ use App\Http\Controllers\AdminPanel\AdminProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
@@ -45,7 +43,8 @@ Route::get('/admin/profile/changepassword',[AdminProfileController::class, 'Admi
 Route::post('/admin/profile/changepassword',[AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
 
-
+// User Routes
+Route::get('/',[IndexController::class, 'index']);
 
 
 
