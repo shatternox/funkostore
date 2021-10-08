@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanel\AdminProfileController;
 use App\Http\Controllers\Shop\IndexController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +19,6 @@ use App\Http\Controllers\Shop\IndexController;
 |
 */
 
-
-Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
-	Route::get('/login', [AdminController::class, 'loginForm']);
-	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
-});
-
-
-
-
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
 // Admin Routes
 Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('/admin/profile',[AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
@@ -42,11 +27,31 @@ Route::post('/admin/profile/store',[AdminProfileController::class, 'AdminProfile
 Route::get('/admin/profile/changepassword',[AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/profile/changepassword',[AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
+Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+    return view('admin.index');
+})->name('dashboard');
+
+Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
+	Route::get('/login', [AdminController::class, 'loginForm']);
+	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
+});
+
+
 
 // User Routes
 Route::get('/',[IndexController::class, 'index']);
 
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+    $id = Auth::user()->id;
+    $user = User::find($id);
+    return view('dashboard', compact('user'));
+})->name('dashboard');
 
+Route::get('/user/logout',[IndexController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.profile');
+Route::post('/user/profile/store',[IndexController::class, 'UserProfileStore'])->name('user.profile.store');
+Route::get('/user/profile/changepassword',[IndexController::class, 'UserChangePassword'])->name('user.change.password');
+Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdatePassword'])->name('user.update.password');
 
 
 

@@ -77,8 +77,6 @@ class AdminProfileController extends Controller
             return redirect()->back();
         }
 
-
-        return view('admin.admin_change_password');
     }
 
 }

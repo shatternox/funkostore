@@ -17,8 +17,7 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="{{ asset('adminpanel/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('adminpanel/css/skin_color.css') }}">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-
+  
      
   </head>
 
