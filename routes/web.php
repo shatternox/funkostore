@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanel\AdminProfileController;
+use App\Http\Controllers\AdminPanel\BrandController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,12 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
 	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
+
+// Brands
+Route::prefix('brand')->group(function(){
+    Route::get('/view',[BrandController::class, 'BrandView'])->name('all.brand');
+});
+
 
 
 
