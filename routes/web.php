@@ -40,7 +40,12 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 // Brands
 Route::prefix('brand')->group(function(){
     Route::get('/view',[BrandController::class, 'BrandView'])->name('all.brand');
+    Route::post('/store',[BrandController::class, 'BrandStore'])->name('brand.store');
+    Route::get('/edit/{id}',[BrandController::class, 'BrandEdit'])->name('brand.edit');
+    Route::post('/update/{id}',[BrandController::class, 'BrandUpdate'])->name('brand.update');
+    Route::get('/delete/{id}',[BrandController::class, 'BrandDelete'])->name('brand.delete');
 });
+
 
 
 
