@@ -71,8 +71,6 @@ Route::prefix('category')->group(function(){
 });
 
 
-
-
 // User Routes
 Route::get('/',[IndexController::class, 'index']);
 
@@ -87,8 +85,6 @@ Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.
 Route::post('/user/profile/store',[IndexController::class, 'UserProfileStore'])->name('user.profile.store');
 Route::get('/user/profile/changepassword',[IndexController::class, 'UserChangePassword'])->name('user.change.password');
 Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdatePassword'])->name('user.update.password');
-
-
 
 
 

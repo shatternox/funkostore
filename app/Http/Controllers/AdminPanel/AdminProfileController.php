@@ -30,6 +30,7 @@ class AdminProfileController extends Controller
     }
 
     public function AdminProfileStore(Request $request){
+
         $data = Admin::find(1);
         $data->name = $request->name;
         $data->email = $request->email;
