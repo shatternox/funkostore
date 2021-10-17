@@ -21,7 +21,11 @@ class AdminRedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
+
+
         foreach ($guards as $guard) {
+        
+            // dd($guard); 
             if (Auth::guard($guard)->check()) {
                 return redirect($guard.'/dashboard');
             }

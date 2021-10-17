@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
+
+    public function AdminDashboard(){
+        return view('admin.index');
+    }
+
     public function AdminProfile(){
 
         $admin = Admin::find(1);
