@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ $subcategory['category']['category_name'] }}</td>
                                     <td>{{ $subcategory->subcategory_name }}</td>
-                                    <td>
+                                    <td width="30%">
                                         <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-info" title="Edit Brand"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('subcategory.delete', $subcategory->id) }}" id="delete" class="btn btn-danger" title="Delete Brand"><i class="fa fa-trash"></i></a>
                                     </td>
