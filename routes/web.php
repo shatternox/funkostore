@@ -34,6 +34,33 @@ Route::middleware(['auth:admin'])->group( function (){
     Route::get('/admin/profile/changepassword',[AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/profile/changepassword',[AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
+    
+    Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
+
+    // Brands
+    Route::prefix('brand')->group(function(){
+        Route::get('/view',[BrandController::class, 'BrandView'])->name('all.brand');
+        Route::post('/store',[BrandController::class, 'BrandStore'])->name('brand.store');
+        Route::get('/edit/{id}',[BrandController::class, 'BrandEdit'])->name('brand.edit');
+        Route::post('/update/{id}',[BrandController::class, 'BrandUpdate'])->name('brand.update');
+        Route::get('/delete/{id}',[BrandController::class, 'BrandDelete'])->name('brand.delete');
+    });
+
+    // Category
+    Route::prefix('category')->group(function(){
+        Route::get('/view',[CategoryController::class, 'CategoryView'])->name('all.category');
+        Route::post('/store',[CategoryController::class, 'CategoryStore'])->name('category.store');
+        Route::get('/edit/{id}',[CategoryController::class, 'CategoryEdit'])->name('category.edit');
+        Route::post('/update/{id}',[CategoryController::class, 'CategoryUpdate'])->name('category.update');
+        Route::get('/delete/{id}',[CategoryController::class, 'CategoryDelete'])->name('category.delete');
+
+        Route::get('/sub/view',[SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
+        Route::post('/sub/store',[SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');
+        Route::get('/sub/edit/{id}',[SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
+        Route::post('/sub/update/{id}',[SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
+        Route::get('/sub/delete/{id}',[SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
+
+    });
 
 });
 
@@ -43,32 +70,6 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
 
-Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
-
-// Brands
-Route::prefix('brand')->group(function(){
-    Route::get('/view',[BrandController::class, 'BrandView'])->name('all.brand');
-    Route::post('/store',[BrandController::class, 'BrandStore'])->name('brand.store');
-    Route::get('/edit/{id}',[BrandController::class, 'BrandEdit'])->name('brand.edit');
-    Route::post('/update/{id}',[BrandController::class, 'BrandUpdate'])->name('brand.update');
-    Route::get('/delete/{id}',[BrandController::class, 'BrandDelete'])->name('brand.delete');
-});
-
-// Category
-Route::prefix('category')->group(function(){
-    Route::get('/view',[CategoryController::class, 'CategoryView'])->name('all.category');
-    Route::post('/store',[CategoryController::class, 'CategoryStore'])->name('category.store');
-    Route::get('/edit/{id}',[CategoryController::class, 'CategoryEdit'])->name('category.edit');
-    Route::post('/update/{id}',[CategoryController::class, 'CategoryUpdate'])->name('category.update');
-    Route::get('/delete/{id}',[CategoryController::class, 'CategoryDelete'])->name('category.delete');
-
-    Route::get('/sub/view',[SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
-    Route::post('/sub/store',[SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');
-    Route::get('/sub/edit/{id}',[SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
-    Route::post('/sub/update/{id}',[SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
-    Route::get('/sub/delete/{id}',[SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
-
-});
 
 
 // User Routes
