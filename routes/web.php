@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanel\AdminProfileController;
 use App\Http\Controllers\AdminPanel\BrandController;
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\SubCategoryController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Models\User;
@@ -59,6 +60,13 @@ Route::middleware(['auth:admin'])->group( function (){
         Route::get('/sub/edit/{id}',[SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
         Route::post('/sub/update/{id}',[SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
         Route::get('/sub/delete/{id}',[SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
+
+    });
+
+    // Product
+    Route::prefix('product')->group(function(){
+        Route::get('/add',[ProductController::class, 'ProductAdd'])->name('add.product');
+
 
     });
 
