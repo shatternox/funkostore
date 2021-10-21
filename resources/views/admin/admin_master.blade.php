@@ -63,6 +63,10 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{{ asset('assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+  <script src="{{ asset('assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+	<script src="{{ asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+  <script src="{{ asset('adminpanel/js/pages/editor.js') }}"></script>
 
   <script>
   @if(Session::has('message'))
