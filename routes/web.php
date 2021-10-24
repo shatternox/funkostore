@@ -69,6 +69,20 @@ Route::middleware(['auth:admin'])->group( function (){
     // Product
     Route::prefix('product')->group(function(){
         Route::get('/add',[ProductController::class, 'ProductAdd'])->name('add.product');
+        Route::post('/store',[ProductController::class, 'ProductStore'])->name('product.store');
+
+        Route::get('/manage',[ProductController::class, 'ProductManage'])->name('manage.product');
+        Route::get('/edit/{id}',[ProductController::class, 'ProductEdit'])->name('product.edit');
+        Route::post('/update/{id}',[ProductController::class, 'ProductUpdate'])->name('product.update');
+
+        Route::post('/update/image/multiple',[ProductController::class, 'ProductUpdateImages'])->name('product.update.images');
+        Route::post('/update/image/thumbnail/{id}',[ProductController::class, 'ProductUpdateThumbnail'])->name('product.update.thumbnail');
+
+        Route::get('/delete/{id}',[ProductController::class, 'ProductDelete'])->name('product.delete');
+        Route::get('/delete/image/multiple/{id}',[ProductController::class, 'ProductDeleteImages'])->name('product.delete.images');
+
+        Route::get('/update/active/{id}',[ProductController::class, 'ProductActive'])->name('product.active');
+        Route::get('/update/inactive/{id}',[ProductController::class, 'ProductInactive'])->name('product.inactive');
 
 
     });
