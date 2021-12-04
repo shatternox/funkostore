@@ -124,4 +124,7 @@ Route::get('/user/profile/changepassword',[IndexController::class, 'UserChangePa
 Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdatePassword'])->name('user.update.password');
 
 
+Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
+
+
 

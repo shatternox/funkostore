@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\MultiImg;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -96,4 +97,12 @@ class IndexController extends Controller
             return redirect()->back();
         }
     }
+
+    public function ProductDetails($id, $slug){
+        $product = Product::findOrFail($id);
+        $multiimgs = MultiImg::where('product_id', $id)->get();
+
+        return view('shop.product.product_details', compact('product', 'multiimgs'));
+    }
+
 }

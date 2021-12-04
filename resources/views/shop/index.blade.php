@@ -1,6 +1,10 @@
 @extends('shop.main_master')
 @section('shop')
 
+@section('title')
+Funkostore
+@endsection
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
   <div class="container">
     <div class="row"> 
@@ -916,7 +920,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
                             <!-- /.image -->
                             
                             
@@ -930,7 +934,7 @@
                             @if($product->discount == NULL )
                             <div class="tag new"><span>new</span></div>
                             @else
-                            <div class="tag hot"><span>{{ round($discounted_price) }}%</span></div>
+                            <div class="tag hot"><span>{{ round($product->discount) }}%</span></div>
                             @endif
 
                             </div>
@@ -938,7 +942,7 @@
                           </div>
                           
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">{{$product->product_name}}</a></h3>
+                            <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
 
@@ -997,7 +1001,7 @@
                     <div class="products">
                       <div class="product">
                         <div class="product-image">
-                          <div class="image"> <a href="detail.html"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
+                          <div class="image"> <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
                           <!-- /.image -->
                           
                           <div class="tag new"><span>new</span></div>
@@ -1005,7 +1009,7 @@
                         <!-- /.product-image -->
                         
                         <div class="product-info text-left">
-                          <h3 class="name"><a href="detail.html">{{$product->product_name}}</a></h3>
+                          <h3 class="name"><a href="{{ url('product/details/' . $product->id) }}">{{$product->product_name}}</a></h3>
                           <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> ${{$product->selling_price}} </span> <span class="price-before-discount">${{$product->selling_price}}</span> </div>

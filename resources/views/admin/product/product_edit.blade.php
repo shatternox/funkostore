@@ -302,7 +302,7 @@
                 <div class="col-md-6">
                     <div class="box bt-3 border-info">
                     <div class="box-header">
-                        <h4 class="box-title">Prouct Thumbnail <strong>Update</strong></h4>
+                        <h4 class="box-title">Product Thumbnail <strong>Update</strong></h4>
                     </div>
 
                     <form method="POST" action="{{ route('product.update.thumbnail', $product->id) }}" enctype="multipart/form-data">
@@ -314,9 +314,9 @@
                                 <div class="card">
                                     <img class="card-img-top" src="{{ asset($product->product_thumbnail) }}" style="height: 130px" id="thumbnail">
                                     <div class="card-body">
-                                        <h5 class="card-title">
+                                        <!-- <h5 class="card-title">
                                             <a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Image"><i class="fa fa-trash"></i> </a>
-                                        </h5>
+                                        </h5> -->
                                         <p class="card-text">
                                             <div class="form-group">
                                                 <label for="" class="form-control-label">Change Image <span class="tx-danger"></span></label>
@@ -343,7 +343,7 @@
                 <div class="col-md-6">
                     <div class="box bt-3 border-info">
                     <div class="box-header">
-                        <h4 class="box-title">Prouct Images <strong>Update</strong></h4>
+                        <h4 class="box-title">Product Images <strong>Update</strong></h4>
                     </div>
 
                     <form method="POST" action="{{ route('product.update.images') }}" enctype="multipart/form-data">
