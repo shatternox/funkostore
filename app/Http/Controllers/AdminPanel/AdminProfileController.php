@@ -31,6 +31,16 @@ class AdminProfileController extends Controller
 
     public function AdminProfileStore(Request $request){
 
+        $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'profile_photo_path' => 'mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'name.required' => 'Please input the name',
+                'email.required' => 'Please input the email',
+            ]
+        );
         $data = Admin::find(1);
         $data->name = $request->name;
         $data->email = $request->email;

@@ -16,15 +16,8 @@
                     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
                 </ul>
 
-
-
-
             </div>
             <div class="col-md-2">
-
-
-                
-
 
             </div>
             <div class="col-md-6">
@@ -32,38 +25,44 @@
                 <div class="card">
                     <h3 class="text-center"><span class="text-danger">Update Your Profile </h3>
 
-
                     <div class="card-body">
                         <form action="{{ route('user.profile.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                                @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Email Address</label>
                                 <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                                @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Phone Number </label>
                                 <input type="text" name="phone" class="form-control" value="{{ $user->phone }}" >
+                                @error('phone')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Profile Picture</label>
                                 <input type="file" name="profile_photo_path" class="form-control" id="image">
+                                @error('profile_photo_path')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">Update</button>
                             </div>
-
-
-
                         </form>
                     </div>
 
                 </div>
-                
-
 
             </div>
         </div>

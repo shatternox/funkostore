@@ -30,10 +30,7 @@ class IndexController extends Controller
 
         Auth::logout();
         return Redirect()->route('login');
-
-
     }
-
 
     public function UserProfile(){
         $id = Auth::user()->id;
@@ -43,6 +40,20 @@ class IndexController extends Controller
     }   
 
     public function UserProfileStore(Request $request){
+
+        $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'profile_photo_path' => 'mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'name.required' => 'Please input the name',
+                'email.required' => 'Please input the email',
+                'phone.required' => 'Please input the phone',
+            ]
+        );
+
         $data = User::find(Auth::user()->id);
         $data->name = $request->name;
         $data->email = $request->email;

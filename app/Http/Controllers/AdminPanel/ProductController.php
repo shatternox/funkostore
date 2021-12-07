@@ -25,7 +25,11 @@ class ProductController extends Controller
     }
 
     public function ProductStore(Request $request){
-
+        $request->validate([
+                'product_thumbnail' => 'mimes:jpg,jpeg,png',
+                'image_name' => 'mimes:jpg,jpeg,png',
+            ],
+        );
 
         $image = $request->file('product_thumbnail');
         $image_name = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();
@@ -89,6 +93,7 @@ class ProductController extends Controller
 
 
     public function ProductEdit($id){
+        
 
         $product = Product::findOrFail($id);
         $categories = Category::latest()->get();
@@ -136,7 +141,10 @@ class ProductController extends Controller
     }
 
     public function ProductUpdateImages(Request $request){
-
+        $request->validate([
+            'image_name' => 'mimes:jpg,jpeg,png',
+            ],
+        );
         $images = $request->image_name;
 
         // dict, key, value
@@ -166,10 +174,13 @@ class ProductController extends Controller
     }
 
     public function ProductUpdateThumbnail(Request $request, $id){
+        $request->validate([
+            'product_thumbnail' => 'mimes:jpg,jpeg,png',
+            ],
+        );
         
         $product = Product::findOrFail($id);
 
-        
         $image = $request->file('product_thumbnail');
 
         $image_name = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();

@@ -16,15 +16,16 @@ class SliderController extends Controller
     }
 
     public function SliderStore(Request $request){
-
         $request->validate([
-                'slider_image' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'slider_image' => 'required|mimes:jpg,jpeg,png|max:2048',
             ],
             [
-                'slider_image.required' => 'Slider needs an image'
+                'title.required' => 'Please input the title',
+                'description.required' => 'Please input the description',
+                'slider_image.required' => 'Please input the slider image',
             ]
-    
-    
         );
 
         $image = $request->file('slider_image');
@@ -54,7 +55,16 @@ class SliderController extends Controller
     }
 
     public function SliderUpdate(Request $request, $id){
-
+        $request->validate([
+                'title' => 'required',
+                'description' => 'required',
+                'slider_image' => 'mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'title.required' => 'Please input the title',
+                'description.required' => 'Please input the description',
+            ]
+        );
 
         $slider = Slider::findOrFail($id);
         $slider->title = $request->title;

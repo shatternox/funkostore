@@ -18,14 +18,12 @@ class BrandController extends Controller
 
         $request->validate([
                 'brand_name' => 'required',
-                'brand_image' => 'required',
+                'brand_image' => 'required|mimes:jpg,jpeg,png|max:2048',
             ],
             [
                 'brand_name.required' => 'Please input the brand name',
-                'brand_image.required' => 'Brand needs image'
+                'brand_image.required' => 'Please input the brand image',
             ]
-    
-    
         );
 
         $image = $request->file('brand_image');
@@ -57,14 +55,13 @@ class BrandController extends Controller
     public function BrandUpdate(Request $request, $id){
 
         $request->validate([
-            'brand_name' => 'required',
-        ],
-        [
-            'brand_name.required' => 'Please input the new brand name',
-        ]
-
-
-    );
+                'brand_name' => 'required',
+                'brand_image' => 'mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'brand_name.required' => 'Please input the brand name',
+            ]
+        );
 
         $brand = Brand::findOrFail($id);
         $brand->brand_name = $request->brand_name;

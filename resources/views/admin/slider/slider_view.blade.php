@@ -96,7 +96,9 @@
                                 <h5>Title<span class="text-danger">*</span></h5>
                                 <div class="controls">
                                 <input type="text" name="title" class="form-control" value="" > 
-                               
+                                @error('title')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror 
                                 </div>
                             </div>
 
@@ -104,7 +106,9 @@
                                 <h5>Description<span class="text-danger">*</span></h5>
                                 <div class="controls">
                                 <input type="text" name="description" class="form-control" value="" > 
-                               
+                                @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror 
                                 </div>
                             </div>
 
