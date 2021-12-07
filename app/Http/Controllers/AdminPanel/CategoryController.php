@@ -48,9 +48,11 @@ class CategoryController extends Controller
     public function CategoryUpdate(Request $request, $id){
         $request->validate([
                 'category_name' => 'required',
+                'category_icon' => 'required',
             ],
             [
                 'category_name.required' => 'Please input the new category name',
+                'category_icon.required' => 'Please input the category icon',
             ]
 
 
