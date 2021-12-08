@@ -77,6 +77,7 @@ Route::middleware(['auth:admin'])->group( function (){
         Route::post('/update/{id}',[ProductController::class, 'ProductUpdate'])->name('product.update');
 
         Route::post('/update/image/multiple',[ProductController::class, 'ProductUpdateImages'])->name('product.update.images');
+        Route::post('/update/image/multipleEmpty/{id}',[ProductController::class, 'ProductUpdateImageEmpty'])->name('product.update.imageEmpty');
         Route::post('/update/image/thumbnail/{id}',[ProductController::class, 'ProductUpdateThumbnail'])->name('product.update.thumbnail');
 
         Route::get('/delete/{id}',[ProductController::class, 'ProductDelete'])->name('product.delete');

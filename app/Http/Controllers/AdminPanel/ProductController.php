@@ -26,8 +26,7 @@ class ProductController extends Controller
 
     public function ProductStore(Request $request){
         $request->validate([
-                'product_thumbnail' => 'mimes:jpg,jpeg,png',
-                'image_name' => 'mimes:jpg,jpeg,png',
+                'product_thumbnail' => 'mimes:jpg,jpeg,png'
             ],
         );
 
@@ -94,14 +93,14 @@ class ProductController extends Controller
 
     public function ProductEdit($id){
         
-
+        $pid = $id;
         $product = Product::findOrFail($id);
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         $subcategories = SubCategory::latest()->get();
         $images = MultiImg::where('product_id', $id)->get();
 
-        return view('admin.product.product_edit', compact('product', 'brands', 'categories', 'subcategories', 'images'));
+        return view('admin.product.product_edit', compact('pid','product', 'brands', 'categories', 'subcategories', 'images'));
 
     }
 
@@ -170,6 +169,27 @@ class ProductController extends Controller
         );
         
 
+        return redirect()->back()->with($notification);
+    }
+
+    public function ProductUpdateImageEmpty(Request $request,$id){
+        $images = $request->file('image_name');
+        foreach ($images as $img) {
+            $image_names = hexdec(uniqid()). '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('upload/product/multi_image/'. $image_names);
+            $image_paths = 'upload/product/multi_image/'. $image_names;
+
+            MultiImg::insert([
+                'product_id' => $id,
+                'image_name' => $image_paths,
+                'created_at' => Carbon::now(),
+            ]);
+        }
+        $notification = array(
+            'message' => 'Product Images Uploaded Successfully',
+            'alert-type' => 'info'
+        );
+        
         return redirect()->back()->with($notification);
     }
 

@@ -345,37 +345,55 @@
                     <div class="box-header">
                         <h4 class="box-title">Product Images <strong>Update</strong></h4>
                     </div>
+                    @if (sizeof($images) != 0)
+                        <form method="POST" action="{{ route('product.update.images') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row row-sm">
+                                @foreach($images as $image)
+                                <div class="col-md-6">
 
-                    <form method="POST" action="{{ route('product.update.images') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row row-sm">
-                            @foreach($images as $image)
-                            <div class="col-md-6">
+                                    <div class="card">
+                                        <img class="card-img-top" src="{{ asset($image->image_name) }}" style="height: 130px" id="image-{{$image->id}}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <a href="{{ route('product.delete.images', $image->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Image"><i class="fa fa-trash"></i> </a>
+                                            </h5>
+                                            <p class="card-text">
+                                                <div class="form-group">
+                                                    <label for="" class="form-control-label">Change Image <span class="tx-danger"></span></label>
+                                                    <input type="file" class="form-control" name="image_name[{{ $image->id }}]"  onChange="main_thumbnail{{$image->id}}(this)">
+                                                </div>
+                                            </p>
+                            
+                                        </div>
+                                    </div>
 
-                                <div class="card">
-                                    <img class="card-img-top" src="{{ asset($image->image_name) }}" style="height: 130px" id="image-{{$image->id}}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a href="{{ route('product.delete.images', $image->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Image"><i class="fa fa-trash"></i> </a>
-                                        </h5>
-                                        <p class="card-text">
-                                            <div class="form-group">
-                                                <label for="" class="form-control-label">Change Image <span class="tx-danger"></span></label>
-                                                <input type="file" class="form-control" name="image_name[{{ $image->id }}]"  onChange="main_thumbnail{{$image->id}}(this)">
-                                            </div>
-                                        </p>
-                        
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="text-xs right">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Images" style="display: block; margin: auto;">
+                            </div>
+                            <br><br>
+                        </form>
+                    @else
+                        <form action="{{route('product.update.imageEmpty',$pid)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <h5>Multiple Image <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="file" name="image_name[]" class="form-control" id="multi_img" multiple> 
+                                    @error('image_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror 
+                                    <div class="row ml-2" id="preview_img">
+
                                     </div>
                                 </div>
-
                             </div>
-                            @endforeach
-                        </div>
-                        <div class="text-xs right">
-                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Images" style="display: block; margin: auto;">
-                        </div>
-                        <br><br>
-                    </form>
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Upload Images" style="display: block; margin: auto;">
+                        </form>
+                    @endif
 
                     
                     </div>
