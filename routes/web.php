@@ -126,6 +126,7 @@ Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdateP
 
 
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
+Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
 
 
 

@@ -172,7 +172,7 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function ProductUpdateImageEmpty(Request $request,$id){
+    public function ProductUpdateImageEmpty(Request $request, $id){
         $images = $request->file('image_name');
         foreach ($images as $img) {
             $image_names = hexdec(uniqid()). '.' . $img->getClientOriginalExtension();

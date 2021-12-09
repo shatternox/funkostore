@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
@@ -21,8 +22,21 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $featured = Product::where('featured', 1)->where('status', 1)->orderBy('id', 'DESC')->get();
+        $hotdeals = Product::where('hot_deals', 1)->where('status', 1)->where('discount', '!=', NULL)->limit(3)->orderBy('id', 'DESC')->get();
+        $specialoffers = Product::where('special_offer', 1)->where('status', 1)->limit(3)->orderBy('id', 'DESC')->get();
+        $specialdeals = Product::where('special_offer', 1)->where('status', 1)->limit(3)->orderBy('id', 'DESC')->get();
 
-        return view('shop.index', compact('categories', 'sliders', 'products'));
+        $skip_category_0 = Category::skip(0)->first();
+        $skip_product_0 = Product::where('status', 1)->where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+
+        $skip_category_1 = Category::skip(1)->first();
+        $skip_product_1 = Product::where('status', 1)->where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
+
+        $skip_brand_1 = Brand::skip(1)->first();
+        $skip_brand_product_1 = Product::where('status', 1)->where('category_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
+
+        return view('shop.index', compact('categories', 'sliders', 'products', 'featured', 'hotdeals', 'specialoffers', 'specialdeals', 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1', 'skip_brand_1', 'skip_brand_product_1'));
     }
 
 
@@ -114,6 +128,12 @@ class IndexController extends Controller
         $multiimgs = MultiImg::where('product_id', $id)->get();
 
         return view('shop.product.product_details', compact('product', 'multiimgs'));
+    }
+
+    public function ProductTagView($tag){
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $products = Product::where('status', 1)->where('product_tags', $tag)->orderBy('id', 'DESC')->paginate(3);
+        return view('shop.tags.tag_view', compact('products', 'categories'));
     }
 
 }

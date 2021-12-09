@@ -377,7 +377,7 @@
                             <br><br>
                         </form>
                     @else
-                        <form action="{{route('product.update.imageEmpty',$pid)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('product.update.imageEmpty', $pid)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <h5>Multiple Image <span class="text-danger">*</span></h5>
