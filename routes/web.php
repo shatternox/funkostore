@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\SubCategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -127,6 +128,7 @@ Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdateP
 
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
 Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
+Route::post('product/addToCart',[CartController::class, 'addToCart'])->name('product.addtocart');
 
 
 
