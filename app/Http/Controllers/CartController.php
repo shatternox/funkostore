@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function addToCart(Request $request){
-        $exist = Cart::where('user_id',auth()->user()->id)->where('product_id',$request->pid)->first();
+        $userid = auth()->user()->id;
+        $exist = Cart::where('user_id',$userid)->where('product_id',$request->pid)->first();
         if ($exist){
             $exist->update([
-                'quantity'=>$request->quantity
+                'quantity'=>$request->quantity + $exist->quantity
             ]);
         }
         else{
@@ -26,8 +27,8 @@ class CartController extends Controller
     }
 
     public function deleteCartItem(Request $request){
-        
-        $exist = Cart::where('user_id',1)->where('id',$request->cid)->first();
+        $userid = auth()->user()->id;
+        $exist = Cart::where('user_id',$userid)->where('id',$request->cid)->first();
         if ($exist){
             $exist->delete();
         }

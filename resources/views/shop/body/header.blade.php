@@ -80,7 +80,8 @@
               $cart_item = Cart::where('user_id',auth()->user()->id)->get();
               if ($cart_item){
                   foreach($cart_item as $c){
-                      $totalIn_cart+=$c->product->selling_price;
+                      $discounted_price = $c->product->selling_price - $c->product->selling_price * $c->product->discount / 100;
+                      $totalIn_cart+=($discounted_price * $c->quantity);
                       $total_item++;
                   }
               }
@@ -105,8 +106,12 @@
                       <div class="image"> <a href="detail.html"><img src="{{ asset($cart->product->product_thumbnail) }} " alt=""></a> </div>
                     </div>
                     <div class="col-xs-7">
-                      <h3 class="name"><a href="index.php?page-detail">{{$cart->product->product_name}}</a></h3>
-                      <div class="price">${{$cart->product->selling_price}}</div>
+                      <h3 class="name"><a href="{{ url('product/details/' . $cart->product->id . '/' . $cart->product->product_slug) }}">{{$cart->product->product_name}}</a></h3>
+                      @php
+                          $discounted_price = $cart->product->selling_price - $cart->product->selling_price * $cart->product->discount / 100;
+                          $finalPrice = ($discounted_price * $cart->quantity);
+                      @endphp
+                      <div class="price">${{$finalPrice}}</div>
                     </div>
                     <div class="col-xs-1 action"> <a href="{{route('product.deleteCartItem',$cart->id)}}"><i class="fa fa-trash"></i></a> </div>
                   </div>

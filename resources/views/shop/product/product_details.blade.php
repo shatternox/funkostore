@@ -414,10 +414,10 @@
 											<div class="cart-quantity">
 												<div class="quant-input">
 													<div class="arrows">
-													<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-													<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+													<div class="arrow plus gradient" id="addQty"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
+													<div class="arrow minus gradient" id="minQty"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 													</div>
-													<input type="text" value="1" name="quantity">
+													<input type="text" value="1" name="quantity" id="productQty">
 											</div>
 											</div>
 										</div>
@@ -941,7 +941,17 @@
 		</div><!-- /.row -->
     </div>
 
-
+<script>
+	var plus = document.getElementById("addQty");
+	var min = document.getElementById("minQty");
+	var qty = document.getElementById("productQty")
+	plus.addEventListener('click',()=>{
+		qty.value = parseInt(qty.value) + 1;
+	})
+	min.addEventListener('click',()=>{
+		parseInt(qty.value) > 0 && (qty.value = parseInt(qty.value) - 1);
+	})
+</script>
 
 @endsection
 
