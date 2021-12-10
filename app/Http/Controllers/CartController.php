@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function view(){
+        $cart_item = Cart::where('user_id',auth()->user()->id)->get();
+        
+        return view('shop.cart',compact('cart_item'));
+    }
     public function addToCart(Request $request){
         $userid = auth()->user()->id;
         $exist = Cart::where('user_id',$userid)->where('product_id',$request->pid)->first();
@@ -32,6 +37,6 @@ class CartController extends Controller
         if ($exist){
             $exist->delete();
         }
-        return redirect('/');
+        return redirect('/mycart');
     }
 }
