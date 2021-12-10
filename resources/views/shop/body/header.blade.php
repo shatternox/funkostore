@@ -95,6 +95,8 @@
             </div>
             </a>
             @auth
+            @if ($cart_item->first())
+                
             <ul class="dropdown-menu">
               <li>
                 <div class="cart-item product-summary">
@@ -130,6 +132,7 @@
                 
               </li>
             </ul>
+            @endif
             @endauth
             <!-- /.dropdown-menu--> 
           </div>

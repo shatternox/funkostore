@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function view(){
+
         $cart_item = Cart::where('user_id',auth()->user()->id)->get();
         
         return view('shop.cart',compact('cart_item'));
@@ -22,7 +23,7 @@ class CartController extends Controller
         }
         else{
             Cart::insert([
-                'user_id' => 1,
+                'user_id' => $userid,
                 'product_id'=>$request->pid,
                 'quantity'=>$request->quantity
             ]);
