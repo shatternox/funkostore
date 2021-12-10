@@ -128,7 +128,8 @@ Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdateP
 
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
 Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
-Route::post('product/addToCart',[CartController::class, 'addToCart'])->name('product.addtocart');
+Route::post('product/addToCart',[CartController::class, 'addToCart'])->name('product.addtocart')->middleware('auth');
+Route::get('product/deleteCartItem/{cid}',[CartController::class, 'deleteCartItem'])->name('product.deleteCartItem')->middleware('auth');
 
 
 

@@ -68,39 +68,64 @@
         
         <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row"> 
           <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-          
+          @php
+            use App\Models\Cart;
+            
+            $totalIn_cart = 0;
+            $total_item = 0;
+            
+          @endphp
+          @auth
+            @php
+              $cart_item = Cart::where('user_id',auth()->user()->id)->get();
+              if ($cart_item){
+                  foreach($cart_item as $c){
+                      $totalIn_cart+=$c->product->selling_price;
+                      $total_item++;
+                  }
+              }
+            @endphp
+          @endauth
           <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
-              <div class="basket-item-count"><span class="count">2</span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">$</span><span class="value">600.00</span> </span> </div>
+              <div class="basket-item-count"><span class="count">{{$total_item}}</span></div>
+              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">$</span><span class="value">{{$totalIn_cart}}</span> </span> </div>
             </div>
             </a>
+            @auth
             <ul class="dropdown-menu">
               <li>
                 <div class="cart-item product-summary">
+
+
+                  @foreach ($cart_item as $cart)
                   <div class="row">
                     <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="{{ asset('shop/assets/images/cart.jpg') }} " alt=""></a> </div>
+                      <div class="image"> <a href="detail.html"><img src="{{ asset($cart->product->product_thumbnail) }} " alt=""></a> </div>
                     </div>
                     <div class="col-xs-7">
-                      <h3 class="name"><a href="index.php?page-detail">Simple Product</a></h3>
-                      <div class="price">$600.00</div>
+                      <h3 class="name"><a href="index.php?page-detail">{{$cart->product->product_name}}</a></h3>
+                      <div class="price">${{$cart->product->selling_price}}</div>
                     </div>
-                    <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
+                    <div class="col-xs-1 action"> <a href="{{route('product.deleteCartItem',$cart->id)}}"><i class="fa fa-trash"></i></a> </div>
                   </div>
+                  @endforeach
+                  
+                  
                 </div>
                 <!-- /.cart-item -->
                 <div class="clearfix"></div>
                 <hr>
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>$600.00</span> </div>
+                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>${{$totalIn_cart}}</span> </div>
                   <div class="clearfix"></div>
                   <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>
             </ul>
+            @endauth
             <!-- /.dropdown-menu--> 
           </div>
           <!-- /.dropdown-cart --> 

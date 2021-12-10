@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
@@ -35,6 +36,8 @@ class IndexController extends Controller
 
         $skip_brand_1 = Brand::skip(1)->first();
         $skip_brand_product_1 = Product::where('status', 1)->where('category_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
+        
+        
 
         return view('shop.index', compact('categories', 'sliders', 'products', 'featured', 'hotdeals', 'specialoffers', 'specialdeals', 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1', 'skip_brand_1', 'skip_brand_product_1'));
     }
