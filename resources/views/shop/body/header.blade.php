@@ -183,7 +183,7 @@
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                             @foreach($subcategories as $subcategory)
                             <ul class="links">
-                              <li><a href="#">{{$subcategory->subcategory_name}}</a></li>
+                              <li><a href="{{ url('subcategory/product/'.$subcategory->id . '/' . $subcategory->subcategory_slug) }}">{{$subcategory->subcategory_name}}</a></li>
                             </ul>
                             @endforeach 
                           </div>
