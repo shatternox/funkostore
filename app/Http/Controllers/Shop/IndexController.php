@@ -129,14 +129,21 @@ class IndexController extends Controller
     public function ProductDetails($id, $slug){
         $product = Product::findOrFail($id);
         $multiimgs = MultiImg::where('product_id', $id)->get();
+        $relatedproducts =  Product::where('category_id', $product->category_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
 
-        return view('shop.product.product_details', compact('product', 'multiimgs'));
+        return view('shop.product.product_details', compact('product', 'multiimgs', 'relatedproducts'));
     }
 
     public function ProductTagView($tag){
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $products = Product::where('status', 1)->where('product_tags', $tag)->orderBy('id', 'DESC')->paginate(3);
         return view('shop.tags.tag_view', compact('products', 'categories'));
+    }
+
+    public function SubcategoryProduct($subcat_id, $slug){
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
+        return view('shop.product.subcategory_view', compact('products', 'categories'));
     }
 
 }

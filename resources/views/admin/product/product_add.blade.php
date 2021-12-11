@@ -132,18 +132,6 @@
                             <div class="row">
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h5>Product Color <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="product_color" class="form-control" placeholder="White, Blue, Black, ..." required> 
-                                            @error('product_color')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror 
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-4">
 
                                     <div class="form-group">
                                         <h5>Product Selling Price <span class="text-danger">*</span></h5>
@@ -188,21 +176,6 @@
                                     </div>
 
                                 </div>
-
-                                <div class="col-md-6">
-
-                                    <div class="form-group">
-                                        <h5>Product Size <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="product_size" class="form-control" data-role="tagsinput" placeholder="add tags" required> 
-                                            @error('product_size')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror 
-                                        </div>
-                                    </div>
-
-                                </div>
-
 
                             </div>
 

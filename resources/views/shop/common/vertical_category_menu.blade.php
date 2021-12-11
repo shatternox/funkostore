@@ -19,7 +19,7 @@ $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
                       
                         <ul class="links list-unstyled">
                           @foreach($subcategories as $subcategory)
-                          <li><a href="#">{{ $subcategory->subcategory_name }}</a></li>
+                          <li><a href="{{ url('subcategory/product/'.$subcategory->id . '/' . $subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
                           @endforeach
                         </ul>
                       
