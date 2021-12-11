@@ -129,8 +129,9 @@ class IndexController extends Controller
     public function ProductDetails($id, $slug){
         $product = Product::findOrFail($id);
         $multiimgs = MultiImg::where('product_id', $id)->get();
+        $relatedproducts =  Product::where('category_id', $product->category_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
 
-        return view('shop.product.product_details', compact('product', 'multiimgs'));
+        return view('shop.product.product_details', compact('product', 'multiimgs', 'relatedproducts'));
     }
 
     public function ProductTagView($tag){
