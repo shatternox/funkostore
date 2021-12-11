@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\SubCategoryController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -131,7 +131,6 @@ Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
 
 
 Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class, 'SubcategoryProduct']);
-
 
 
 Route::get('mycart/',[CartController::class, 'view'])->name('product.cart')->middleware('auth');
