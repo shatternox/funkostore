@@ -13,6 +13,11 @@ class CartController extends Controller
         
         return view('shop.cart',compact('cart_item'));
     }
+
+    public function checkout(){
+        $cart_item = Cart::where('user_id',auth()->user()->id)->get();
+        return view('shop.checkout',compact('cart_item'));
+    }
     public function addToCart(Request $request){
         $userid = auth()->user()->id;
         $exist = Cart::where('user_id',$userid)->where('product_id',$request->pid)->first();
