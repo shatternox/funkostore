@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\SubCategoryController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;

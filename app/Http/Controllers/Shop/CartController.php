@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -26,7 +27,6 @@ class CartController extends Controller
             return redirect('/');
         }
         
-
         $userid = auth()->user()->id;
         $exist = Cart::where('user_id',$userid)->where('product_id',$request->pid)->first();
         if ($exist){
