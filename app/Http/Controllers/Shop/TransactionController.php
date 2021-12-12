@@ -40,6 +40,7 @@ class TransactionController extends Controller
                 'total_price' => $totalIn_cart,
                 'payment_type' => $request->payment_method,
                 'invoice' => $invoice,
+                'quantity' => $cart->quantity,
                 'order_status' => 'On Going',
             ]);
             $cart->delete();
@@ -50,6 +51,13 @@ class TransactionController extends Controller
     }
 
     public function orderDetails(Request $request){
-        
+        $orderDetails = Transaction::where('invoice',$request->inv)->where('user_id',auth()->user()->id)->first();
+        if (!$orderDetails){
+            return redirect('/');
+        }
+
+        $items = Transaction::where('invoice',$request->inv)->get();
+
+        return view('shop.order_details',compact('orderDetails','items'));
     }
 }

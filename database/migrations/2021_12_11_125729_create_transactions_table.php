@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('user_id');
+            $table->integer('quantity');
             $table->timestamp('date_purchased');
             $table->integer('total_price');
             $table->string('payment_type');
