@@ -28,11 +28,11 @@ class CartController extends Controller
         $product = Product::findOrFail($request->pid);
 
         if ($request->quantity <= 0){
-            return redirect('/');
+            return redirect()->back();
         }
 
         if(($product->product_qty - $request->quantity) < 0){
-            return redirect('/');
+            return redirect()->back();
         }
         
         $userid = auth()->user()->id;
@@ -57,13 +57,18 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect('/');
+        $notification = array(
+            'message' => 'Item successfully added to cart',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
-    public function deleteCartItem(Request $request){
+    public function deleteCartItem($cid){
         $userid = auth()->user()->id;
 
-        $exist = Cart::where('user_id',$userid)->where('id',$request->cid)->first();
+        $exist = Cart::where('user_id',$userid)->where('id',$cid)->first();
         if ($exist){
             $exist->delete();
 
@@ -76,6 +81,12 @@ class CartController extends Controller
             ]);
 
         }
-        return redirect('/mycart');
+
+        $notification = array(
+            'message' => 'Item successfully deleted from cart',
+            'alert-type' => 'warning'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }

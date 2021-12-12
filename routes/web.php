@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminPanel\SubCategoryController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\IndexController;
 use App\Http\Controllers\Shop\TransactionController;
+use App\Http\Controllers\Shop\WishlistController;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,9 +136,23 @@ Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
 Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class, 'SubcategoryProduct']);
 
 
-Route::get('mycart/',[CartController::class, 'view'])->name('product.cart')->middleware('auth');
-Route::post('product/addToCart',[CartController::class, 'addToCart'])->name('product.addtocart')->middleware('auth');
-Route::get('product/deleteCartItem/{cid}',[CartController::class, 'deleteCartItem'])->name('product.deleteCartItem')->middleware('auth');
+
+
+Route::middleware(['auth'])->group( function (){
+
+    Route::get('mycart/',[CartController::class, 'view'])->name('product.cart');
+    Route::post('product/addToCart',[CartController::class, 'addToCart'])->name('product.addtocart');
+    Route::get('product/deleteCartItem/{cid}',[CartController::class, 'deleteCartItem'])->name('product.deleteCartItem');
+    
+    
+    Route::get('/wishlist',[WishlistController::class, 'WishlistView'])->name('wishlist.view');
+    Route::post('/product/addToWish',[WishlistController::class, 'WishlistAdd'])->name('product.addtowish');
+    Route::get('product/deleteWishItem/{wid}',[WishlistController::class, 'WishlistDelete'])->name('product.deleteWishItem');
+    
+
+});
+
+
 
 Route::get('checkout/',[CartController::class, 'checkout'])->name('product.checkout')->middleware('auth');
 Route::get('order/',[TransactionController::class, 'order'])->name('product.order')->middleware('auth');
