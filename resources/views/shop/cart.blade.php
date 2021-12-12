@@ -1,5 +1,3 @@
-@extends('shop.main_master')
-@section('shop')
 {{-- Pindahin style ini ya ke CSS, SEBELUM PINDAHIN PASTIIN GA ADA CLASS YANG SAMA --}}
 
 @section('title')
@@ -93,8 +91,9 @@ Cart
 
 
 <div class="col-md-4 col-sm-12 cart-shopping-total">
-    <a href="#" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
-</div><!-- /.cart-shopping-total -->
+                        <a href="{{ route('product.checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCCED
+                            TO CHEKOUT</a>
+         </div><!-- /.cart-shopping-total -->
 
 
 

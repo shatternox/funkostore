@@ -10,7 +10,9 @@ use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\SubCategoryController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\IndexController;
+use App\Http\Controllers\Shop\TransactionController;
 use App\Http\Controllers\Shop\WishlistController;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -152,4 +154,7 @@ Route::middleware(['auth'])->group( function (){
 
 
 
-
+Route::get('checkout/',[CartController::class, 'checkout'])->name('product.checkout')->middleware('auth');
+Route::get('order/',[TransactionController::class, 'order'])->name('product.order')->middleware('auth');
+Route::get('order/details/{inv}',[TransactionController::class, 'orderDetails'])->middleware('auth');
+Route::post('order/',[TransactionController::class, 'addOrder'])->name('product.addOrder');

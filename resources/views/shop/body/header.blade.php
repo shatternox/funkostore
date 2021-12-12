@@ -9,7 +9,7 @@
             <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
             <li><a href="{{ route('wishlist.view') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="{{ route('product.cart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>My Order</a></li>
+            <li><a href="{{route('product.order')}}"><i class="icon fa fa-check"></i>My Order</a></li>
             
 
             @auth
@@ -127,7 +127,7 @@
                 <div class="clearfix cart-total">
                   <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>${{$totalIn_cart}}</span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                  <a href="{{route('product.checkout')}}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>

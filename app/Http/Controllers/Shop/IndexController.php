@@ -43,9 +43,12 @@ class IndexController extends Controller
     }
 
 
-    public function UserLogout(){
+    public function UserLogout(Request $request){
 
         Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
         return Redirect()->route('login');
     }
 
