@@ -3,7 +3,7 @@
 {{-- Pindahin style ini ya ke CSS, SEBELUM PINDAHIN PASTIIN GA ADA CLASS YANG SAMA --}}
 
 @section('title')
-Cart
+Wishlist
 @endsection
 
 
@@ -35,7 +35,7 @@ Cart
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="home.html">Home</a></li>
-				<li class='active'>MyCart</li>
+				<li class='active'>Wishlist</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -52,57 +52,35 @@ Cart
 				<tr>
 					<th class="cart-romove item">Image</th>
 					<th class="cart-description item">Name</th>
-					<th class="cart-qty item">Quantity</th>
-					<th class="cart-sub-total item">Subtotal</th>
+                    <th class="cart-description item">Add to Cart</th>
 					<th class="cart-total last-item">Remove</th>
 				</tr>
 			</thead><!-- /thead -->
 			<tbody id="cartPage">
-                @php
-                    $totalIn_cart = 0;
-                @endphp
-                @if ($cart_item)
-                    @foreach ($cart_item as $cart)
+                @if ($wishes)
+                    @foreach ($wishes as $wish)
                     <tr>
-                        <td class="cart-img"><img src="{{ asset($cart->product->product_thumbnail) }} " alt=""></td>
-                        <td><a href="{{ url('product/details/' . $cart->product->id . '/' . $cart->product->product_slug) }}">{{$cart->product->product_name}}</a></td>
-                        <td>{{$cart->quantity}}</td>
-                        @php
-                            $discounted_price = $cart->product->selling_price - $cart->product->selling_price * $cart->product->discount / 100;
-                            $totalIn_cart+=($discounted_price * $cart->quantity);
-                        @endphp
-                        <td>${{$discounted_price * $cart->quantity}}</td>
+                        <td class="cart-img"><img src="{{ asset($wish->product->product_thumbnail) }} " alt=""></td>
+                        <td><a href="{{ url('product/details/' . $wish->product->id . '/' . $wish->product->product_slug) }}">{{$wish->product->product_name}}</a></td>
                         <td style="text-align: center">
-                            <a href="{{route('product.deleteCartItem',$cart->id)}}"><i class="fa fa-trash trash-icon-cart"></i></a>
+                            <form action="{{route('product.addtocart')}}" method="post">
+                                @csrf
+                                <input type="hidden" value="1" name="quantity">
+                                <input type="hidden" name="pid" value="{{$wish->product->id}}">
+                                <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+                            </form>
+                        </td>
+                        <td style="text-align: center">
+                            <a href="{{route('product.deleteWishItem',$wish->id)}}"><i class="fa fa-trash trash-icon-cart"></i></a>
                         </td>
                     </tr>
                     @endforeach
-                    <tr class="total-row">
-                        <td colspan="3">Total</td>
-                        <td>${{$totalIn_cart}}</td>
-                    </tr>
                 @endif
                 
 			</tbody>
 		</table>
 	</div>
 </div>		
-
-
-
-
-
-<div class="col-md-4 col-sm-12 cart-shopping-total">
-    <a href="#" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
-</div><!-- /.cart-shopping-total -->
-
-
-
-
-
-
-
-
 
 
 	</div><!-- /.row -->
