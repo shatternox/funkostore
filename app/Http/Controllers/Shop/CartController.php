@@ -18,6 +18,9 @@ class CartController extends Controller
 
     public function checkout(){
         $cart_item = Cart::where('user_id',auth()->user()->id)->get();
+        if (!$cart_item->first()){
+            return redirect('/');
+        }
         return view('shop.checkout',compact('cart_item'));
     }
     public function addToCart(Request $request){
