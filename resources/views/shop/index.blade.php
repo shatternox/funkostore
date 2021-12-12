@@ -306,7 +306,7 @@ Funkostore
                                   </form>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> 
+                                <li class="wishlist"> 
 
                                 <form action="{{route('product.addtowish')}}" method="post">
                                     @csrf
