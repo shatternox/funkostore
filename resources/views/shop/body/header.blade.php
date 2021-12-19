@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="{{ url('/') }}"> <img src="{{ asset('shop/assets/images/logo.png') }}" alt="logo"> </a> </div>
+          <div class="logo"> <a href="{{ url('/') }}"> <img src="{{ asset('shop/assets/images/logo.png') }}" alt="logo" style="width: 200px;"> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->

@@ -147,14 +147,13 @@ Route::middleware(['auth'])->group( function (){
     
     Route::get('/wishlist',[WishlistController::class, 'WishlistView'])->name('wishlist.view');
     Route::post('/product/addToWish',[WishlistController::class, 'WishlistAdd'])->name('product.addtowish');
-    Route::get('product/deleteWishItem/{wid}',[WishlistController::class, 'WishlistDelete'])->name('product.deleteWishItem');
+    Route::get('/product/deleteWishItem/{wid}',[WishlistController::class, 'WishlistDelete'])->name('product.deleteWishItem');
     
 
+    Route::get('/checkout/',[CartController::class, 'checkout'])->name('product.checkout');
+    Route::get('/order/',[TransactionController::class, 'order'])->name('product.order');
+    Route::get('/order/details/{inv}',[TransactionController::class, 'orderDetails']);
+    Route::post('/order/',[TransactionController::class, 'addOrder'])->name('product.addOrder');
 });
 
 
-
-Route::get('checkout/',[CartController::class, 'checkout'])->name('product.checkout')->middleware('auth');
-Route::get('order/',[TransactionController::class, 'order'])->name('product.order')->middleware('auth');
-Route::get('order/details/{inv}',[TransactionController::class, 'orderDetails'])->middleware('auth');
-Route::post('order/',[TransactionController::class, 'addOrder'])->name('product.addOrder');

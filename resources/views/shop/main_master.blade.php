@@ -33,6 +33,12 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 </head>
+
+<style>
+    .body-content{
+        min-height: 1000px;
+    }
+</style>
 <body class="cnt-home">
 <!-- ============================================== HEADER ============================================== -->
 @include('shop.body.header')
@@ -51,6 +57,8 @@
 
 <!-- JavaScripts placed at the end of the document so the pages load faster --> 
 
+
+</body>
 <script src="{{ asset('shop/assets/js/jquery-1.11.1.min.js') }}"></script> 
 <script src="{{ asset('shop/assets/js/bootstrap.min.js') }}"></script> 
 <script src="{{ asset('shop/assets/js/bootstrap-hover-dropdown.min.js') }}"></script> 
@@ -88,7 +96,4 @@ switch(type){
 }
 @endif 
 </script>
-  
-
-</body>
 </html>

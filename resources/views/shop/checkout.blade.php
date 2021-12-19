@@ -37,7 +37,7 @@
                                             <div class="col-md-6 col-sm-6 already-registered-login">
                                                 <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
 
-                                                <form class="register-form" action="/order" method="POST">
+                                                <form class="register-form" action="{{ route('product.addOrder') }}" method="POST">
                                                     @csrf
 
 
@@ -216,20 +216,19 @@
                                         <div class="col-md-4">
                                             <label for="">Card</label>
                                             <input type="radio" name="payment_method" value="card" required>
-                                            <img src="{{ asset('frontend/assets/images/payments/3.png') }}">
+                                            <img src="{{ asset('shop/assets/images/payments/3.png') }}">
                                         </div> <!-- end col md 4 -->
 
                                         <div class="col-md-4">
                                             <label for="">Cash</label>
                                             <input type="radio" name="payment_method" value="cash" required>
-                                            <img src="{{ asset('frontend/assets/images/payments/6.png') }}">
+                                            <img src="{{ asset('shop/assets/images/payments/4.png') }}">
                                         </div> <!-- end col md 4 -->
 
 
                                     </div> <!-- // end row  -->
                                     <hr>
-                                    <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment
-                                        Step</button>
+                                    <button type="submit" class="btn-upper btn btn-primary checkout-page-button" disabled>Payment Step</button>
 
 
                                 </div>
