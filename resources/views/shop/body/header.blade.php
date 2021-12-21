@@ -45,21 +45,13 @@
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="search-area">
-            <form>
+            <form action="{{ route('product.search') }}" method="POST">
+              @csrf
               <div class="control-group">
-                <ul class="categories-filter animate-dropdown">
-                  <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu" >
-                      <li class="menu-header">Computer</li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <input class="search-field" placeholder="Search here..." />
-                <a class="search-button" href="#" ></a> </div>
+     
+                <input class="search-field" placeholder="Search here..." name="search" />
+                <button class="search-button" type="submit"></button> 
+              </div>
             </form>
           </div>
           <!-- /.search-area --> 
@@ -169,7 +161,7 @@
 
                 @foreach($categories as $category)
 
-                <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ $category->category_name }}</a>
+                <li class="dropdown yamm mega-menu"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ $category->category_name }}</a>
                   <ul class="dropdown-menu container">
                     <li>
                       <div class="yamm-content ">
@@ -187,10 +179,7 @@
                             </ul>
                             @endforeach 
                           </div>
-                          <!-- /.col -->
-                             
-                          <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('shop/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
-                          <!-- /.yamm-content --> 
+     
                         </div>
                       </div>
                     </li>
@@ -199,10 +188,9 @@
 
                 @endforeach
 
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
               </ul>
               <!-- /.navbar-nav -->
-              <div class="clearfix"></div>
+              
             </div>
             <!-- /.nav-outer --> 
           </div>

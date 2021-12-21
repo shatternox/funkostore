@@ -137,6 +137,8 @@ Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdateP
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
 Route::get('/product/tag/{tag}',[IndexController::class, 'ProductTagView']);
 
+Route::post('/search',[IndexController::class, 'ProductSearch'])->name('product.search');
+
 
 Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class, 'SubcategoryProduct']);
 

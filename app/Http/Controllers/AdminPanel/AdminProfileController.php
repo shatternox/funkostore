@@ -15,7 +15,7 @@ class AdminProfileController extends Controller
 
     public function AdminDashboard(){
 
-        $transactions = Transaction::select('invoice','payment_type','date_purchased','total_price','order_status')->groupBy('invoice','payment_type','date_purchased','total_price','order_status')->get();
+        $transactions = Transaction::select('invoice','payment_type','date_purchased','total_price','order_status', 'transaction_proof')->groupBy('invoice','payment_type','date_purchased','total_price','order_status', 'transaction_proof')->get();
         
         return view('admin.index', compact('transactions'));
     }
@@ -40,7 +40,6 @@ class AdminProfileController extends Controller
         return redirect()->back();
 
     }
-
 
 
 

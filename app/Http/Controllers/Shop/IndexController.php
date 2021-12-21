@@ -143,7 +143,19 @@ class IndexController extends Controller
         return view('shop.tags.tag_view', compact('products', 'categories'));
     }
 
+    public function ProductSearch(Request $request){
+
+        $request->validate(["search" => "required"]);
+
+        $item = $request->search;
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $products = Product::where('status', 1)->where('product_name', 'LIKE', '%'.$item.'%')->get();
+        return view('shop.product.search', compact('categories', 'products'));
+    }
+
     public function SubcategoryProduct($subcat_id, $slug){
+
+        
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
         return view('shop.product.subcategory_view', compact('products', 'categories'));

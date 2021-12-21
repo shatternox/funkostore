@@ -49,7 +49,7 @@ class WishlistController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect('/')->with($notification);
     }
 
     public function WishlistDelete($wid){

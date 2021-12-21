@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->string('payment_type');
             $table->string('invoice');
             $table->string('order_status');
+            $table->string('transaction_proof');
             $table->timestamps();
         });
     }

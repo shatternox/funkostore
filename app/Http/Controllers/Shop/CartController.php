@@ -62,7 +62,7 @@ class CartController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect('/')->with($notification);
     }
 
     public function deleteCartItem($cid){

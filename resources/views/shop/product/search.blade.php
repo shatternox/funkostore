@@ -95,12 +95,12 @@ Sub-category
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-           
+               
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-         
+              
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 
@@ -144,7 +144,7 @@ Sub-category
                         
                         <div class="product-info text-left">
                           <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                          <div class="rating rateit-small"></div>
+                          
                           <div class="description"></div>
 
                             @if ($product->discount == NULL)
@@ -172,15 +172,15 @@ Sub-category
                                 </li>
                                 <li class="wishlist"> 
 
-<form action="{{route('product.addtowish')}}" method="post">
-    @csrf
-    <input type="hidden" value="1" name="quantity">
-    <input type="hidden" name="pid" value="{{$product->id}}">
-    <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Wish"> <i class="fa fa-heart"></i> </button>
-  </form>
-  <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
+                                <form action="{{route('product.addtowish')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" value="1" name="quantity">
+                                    <input type="hidden" name="pid" value="{{$product->id}}">
+                                    <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Wish"> <i class="fa fa-heart"></i> </button>
+                                  </form>
+                                  <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
 
-</li>
+                                </li>
                               
                             </ul>
                           </div>
@@ -278,19 +278,7 @@ Sub-category
             </div>
             <!-- /.tab-pane #list-container --> 
           </div>
-          <!-- /.tab-content -->
-          <div class="clearfix filters-container">
-            <div class="text-right">
-              <div class="pagination-container">
-                <ul class="list-inline list-unstyled">
-                    {{ $products->links() }}
-                </ul>
-                <!-- /.list-inline --> 
-              </div>
-              <!-- /.pagination-container --> </div>
-            <!-- /.text-right --> 
-            
-          </div>
+
           <!-- /.filters-container --> 
           
         </div>

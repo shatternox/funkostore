@@ -96,4 +96,12 @@ switch(type){
 }
 @endif 
 </script>
+
+<script>
+    
+    $('.checkout-page-button').prop('disabled',false)
+    if( document.getElementById("videoUploadFile").files.length == 0 ){
+        console.log("no files selected");
+    }
+</script>
 </html>

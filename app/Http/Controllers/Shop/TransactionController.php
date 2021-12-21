@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Transaction;
+use App\Models\TransactionProof;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Intervention\Image\Facades\Image;
 
 class TransactionController extends Controller
 {
@@ -32,6 +34,12 @@ class TransactionController extends Controller
         while(Transaction::where('invoice',$invoice)->first()){
             $invoice = strtoupper(uniqid('FNK'));
         }
+        
+
+        $image = $request->file('transactionProof');
+        $image_names = $invoice . '.' . $image->getClientOriginalExtension();
+        $image_paths = 'upload/transaction_proofs/'. $image_names;
+
         foreach($cart_item as $cart){
             Transaction::insert([
                 'product_id' => $cart->product->id,
@@ -42,9 +50,13 @@ class TransactionController extends Controller
                 'invoice' => $invoice,
                 'quantity' => $cart->quantity,
                 'order_status' => 'On Going',
+                'transaction_proof' => $image_paths,
             ]);
             $cart->delete();
         }
+
+
+        Image::make($image)->resize(917,1000)->save($image_paths);
 
         return redirect('/');
         

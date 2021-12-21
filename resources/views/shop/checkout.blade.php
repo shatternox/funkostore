@@ -37,7 +37,7 @@
                                             <div class="col-md-6 col-sm-6 already-registered-login">
                                                 <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
 
-                                                <form class="register-form" action="{{ route('product.addOrder') }}" method="POST">
+                                                <form class="register-form" action="{{ route('product.addOrder') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
 
 
@@ -115,6 +115,14 @@
                                                             <option value="" selected="" disabled="">Select State</option>
 
                                                         </select>
+
+                                                    </div>
+                                                </div> <!-- // end form group -->
+
+                                                <div class="form-group">
+                                                    <h5><b>Upload bukti transaksi</b> <span class="text-danger">*</span></h5>
+                                                    <div class="controls">
+                                                        <input type="file" name="transactionProof" required>
 
                                                     </div>
                                                 </div> <!-- // end form group -->
@@ -210,14 +218,14 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="">Card</label>
-                                            <input type="radio" name="payment_method" value="card" required>
+                                            <input type="radio" name="payment_method" value="visa" required>
                                             <img src="{{ asset('shop/assets/images/payments/3.png') }}">
                                         </div> <!-- end col md 4 -->
 
                                         <div class="col-md-4">
                                             <label for="">Cash</label>
-                                            <input type="radio" name="payment_method" value="cash" required>
-                                            <img src="{{ asset('shop/assets/images/payments/4.png') }}">
+                                            <input type="radio" name="payment_method" value="paypal" required>
+                                            <img src="{{ asset('shop/assets/images/payments/1.png') }}">
                                         </div> <!-- end col md 4 -->
 
 
@@ -233,22 +241,10 @@
                     </div>
 
 
-
-
-
-
-
                     </form>
                 </div><!-- /.row -->
             </div><!-- /.checkout-box -->
             <!-- === ===== BRANDS CAROUSEL ==== ======== -->
-
-
-
-
-
-
-
 
             <!-- ===== == BRANDS CAROUSEL : END === === -->
         </div><!-- /.container -->

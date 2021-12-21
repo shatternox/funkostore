@@ -40,16 +40,19 @@
                                     <td>{{ $transaction->invoice }}</td>
                                     <td>{{ $transaction->date_purchased }}</td>
                                     <td>{{ $transaction->payment_type }}</td>
-									<td></td>
+									<td><img src="{{ asset( $transaction->transaction_proof ) }}" alt="" style="width: 60px;"></td>
                                     @if ($transaction->order_status == "Finished")
                                     <td><span class="badge badge-pill badge-success"> {{ $transaction->order_status }} </span></td>
                                     @else
                                     <td><span class="badge badge-pill badge-danger"> {{ $transaction->order_status }} </span></td>
                                     @endif
-                                    <td>
-										<a href="{{ route('approve.transaction', $transaction->invoice) }}" class="btn btn-success" title="Approve"><i class="fas fa-thumbs-up"></i></a>
+
+                                   
+                                    <td width=20%>
+                                        <a href="{{ route('approve.transaction', $transaction->invoice) }}" class="btn btn-success" title="Approve"><i class="fas fa-thumbs-up"></i></a>
                                         <a href="{{ route('unapprove.transaction', $transaction->invoice) }}" class="btn btn-danger" title="Unapprove"><i class="fas fa-skull-crossbones"></i></a>
                                     </td>
+                               
                                 </tr>
 								@php
 								$i += 1;

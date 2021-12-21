@@ -49,20 +49,7 @@ INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_icon
 -- Dumping data for table `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(14, '2014_10_12_000000_create_users_table', 1),
-(15, '2014_10_12_100000_create_password_resets_table', 1),
-(16, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(17, '2019_08_19_000000_create_failed_jobs_table', 1),
-(18, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(19, '2021_02_02_212221_create_admins_table', 1),
-(20, '2021_10_04_011541_create_sessions_table', 1),
-(21, '2021_10_08_145949_create_brands_table', 1),
-(22, '2021_10_14_160454_create_categories_table', 1),
-(23, '2021_10_15_162458_create_sub_categories_table', 1),
-(24, '2021_10_21_095838_create_products_table', 1),
-(25, '2021_10_21_100708_create_multi_imgs_table', 1),
-(26, '2021_12_02_111518_create_sliders_table', 1);
+
 
 --
 -- Dumping data for table `multi_imgs`

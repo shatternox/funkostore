@@ -128,8 +128,6 @@ Funkostore
           </div>
           <!-- /.sidebar-widget-body --> 
         </div>
-
-        @include('shop.common.testimonials')
         
       
         
