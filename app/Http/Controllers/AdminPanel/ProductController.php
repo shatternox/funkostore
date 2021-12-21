@@ -220,7 +220,7 @@ class ProductController extends Controller
 
     public function ProductDelete($id){
         $product = Product::findOrFail($id);
-        @unlink($product->product_thumbnail);
+        // @unlink($product->product_thumbnail);
         $product->delete();
 
         $images = MultiImg::where('product_id', $id)->get();
