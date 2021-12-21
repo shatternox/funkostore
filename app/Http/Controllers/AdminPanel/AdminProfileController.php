@@ -5,6 +5,8 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Transaction;
+use App\Models\TransactionProof;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,8 +14,35 @@ class AdminProfileController extends Controller
 {
 
     public function AdminDashboard(){
-        return view('admin.index');
+
+        $transactions = Transaction::select('invoice','payment_type','date_purchased','total_price','order_status')->groupBy('invoice','payment_type','date_purchased','total_price','order_status')->get();
+        
+        return view('admin.index', compact('transactions'));
     }
+
+    public function ApproveTransaction($invoice){
+
+        $transaction = Transaction::where('invoice', $invoice);
+        $transaction->update([
+            "order_status" => "Finished",
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function UnapproveTransaction($invoice){
+
+        $transaction = Transaction::where('invoice', $invoice);
+        $transaction->update([
+            "order_status" => "Rejected",
+        ]);
+
+        return redirect()->back();
+
+    }
+
+
+
 
     public function AdminProfile(){
 

@@ -35,6 +35,8 @@ class CreateProductsTable extends Migration
             $table->integer('status')->default(0);
             $table->timestamps();
         });
+
+     
     }
 
     /**
@@ -45,5 +47,7 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+
+
     }
 }

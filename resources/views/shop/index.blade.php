@@ -5,6 +5,11 @@
 Funkostore
 @endsection
 
+<style>
+  .padding-left{
+    padding-left: 15px;
+  }
+</style>
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
   <div class="container">
     <div class="row"> 
@@ -224,7 +229,7 @@ Funkostore
                           <!-- /.product-info -->
                           <div class="cart clearfix animate-effect">
                             <div class="action">
-                              <ul class="list-unstyled">
+                              <ul class="list-unstyled padding-left">
                                 <li class="add-cart-button btn-group">
                                   <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -299,7 +304,7 @@ Funkostore
                         <!-- /.product-info -->
                         <div class="cart clearfix animate-effect">
                           <div class="action">
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled padding-left">
                               <li class="add-cart-button btn-group">
                                 <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -423,7 +428,7 @@ Funkostore
                 <!-- /.product-info -->
                 <div class="cart clearfix animate-effect">
                   <div class="action">
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled padding-left">
                       <li class="add-cart-button btn-group">
                       <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -432,7 +437,7 @@ Funkostore
                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                   </form>
                       </li>
-                      <li class="lnk wishlist"> 
+                      <li class="wishlist"> 
                       <form action="{{route('product.addtowish')}}" method="post">
                                     @csrf
                                     <input type="hidden" value="1" name="quantity">
@@ -441,7 +446,7 @@ Funkostore
                                   </form>
                                   <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
                       </li>
-                      <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                      
                     </ul>
                   </div>
                   <!-- /.action --> 
@@ -510,7 +515,7 @@ Funkostore
                 <!-- /.product-info -->
                 <div class="cart clearfix animate-effect">
                   <div class="action">
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled padding-left">
                       <li class="add-cart-button btn-group">
                       <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -519,7 +524,7 @@ Funkostore
                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                   </form>
                       </li>
-                      <li class="lnk wishlist"> 
+                      <li class="wishlist"> 
                       <form action="{{route('product.addtowish')}}" method="post">
                                     @csrf
                                     <input type="hidden" value="1" name="quantity">
@@ -528,7 +533,7 @@ Funkostore
                                   </form>
                                   <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
                       </li>
-                      <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                      
                     </ul>
                   </div>
                   <!-- /.action --> 
@@ -593,7 +598,7 @@ Funkostore
                 <!-- /.product-info -->
                 <div class="cart clearfix animate-effect">
                   <div class="action">
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled padding-left">
                       <li class="add-cart-button btn-group">
                       <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -602,7 +607,7 @@ Funkostore
                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                   </form>
                       </li>
-                      <li class="lnk wishlist"> 
+                      <li class="wishlist"> 
                       <form action="{{route('product.addtowish')}}" method="post">
                                     @csrf
                                     <input type="hidden" value="1" name="quantity">
@@ -679,7 +684,7 @@ Funkostore
                 <!-- /.product-info -->
                 <div class="cart clearfix animate-effect">
                   <div class="action">
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled padding-left">
                       <li class="add-cart-button btn-group">
                       <form action="{{route('product.addtocart')}}" method="post">
                                     @csrf
@@ -688,7 +693,7 @@ Funkostore
                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                   </form>
                       </li>
-                      <li class="add-cart-button btn-group wishlist"> 
+                      <li class="wishlist"> 
                         <form action="{{route('product.addtowish')}}" method="post">
                           @csrf
                           <input type="hidden" value="1" name="quantity">

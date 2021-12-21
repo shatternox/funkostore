@@ -5,7 +5,11 @@
 @section('title')
 {{$product->product_name}} - Product Details
 @endsection
-
+<style>
+  .padding-left{
+    padding-left: 15px;
+  }
+</style>
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
@@ -420,26 +424,27 @@
 		</div><!-- /.product-info -->
 					<div class="cart clearfix animate-effect">
 				<div class="action">
-					<ul class="list-unstyled">
+					<ul class="list-unstyled padding-left">
 						<li class="add-cart-button btn-group">
-							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
-							</button>
-							<button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+							<form action="{{route('product.addtocart')}}" method="post">
+										@csrf
+										<input type="hidden" value="1" name="quantity">
+										<input type="hidden" name="pid" value="{{$product->id}}">
+										<button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+									</form>
 													
 						</li>
 	                   
-		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="detail.html" title="Wishlist">
-								 <i class="icon fa fa-heart"></i>
-							</a>
+		                <li class="wishlist">
+							<form action="{{route('product.addtowish')}}" method="post">
+							@csrf
+							<input type="hidden" value="1" name="quantity">
+							<input type="hidden" name="pid" value="{{$product->id}}">
+							<button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Wish"> <i class="fa fa-heart"></i> </button>
+							</form>
 						</li>
 
-						<li class="lnk">
-							<a class="add-to-cart" href="detail.html" title="Compare">
-							    <i class="fa fa-signal"></i>
-							</a>
-						</li>
+						
 					</ul>
 				</div><!-- /.action -->
 			</div><!-- /.cart -->

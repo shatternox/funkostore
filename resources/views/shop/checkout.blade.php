@@ -96,7 +96,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5><b>District Select</b> <span class="text-danger">*</span></h5>
+                                                    <h5><b>Provinsi Select</b> <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <select name="district_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select District
@@ -109,7 +109,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5><b>State Select</b> <span class="text-danger">*</span></h5>
+                                                    <h5><b>Kota Select</b> <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <select name="state_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select State</option>
@@ -120,12 +120,7 @@
                                                 </div> <!-- // end form group -->
 
 
-                                                <div class="form-group">
-                                                    <label class="info-title" for="exampleInputEmail1">Notes
-                                                        <span>*</span></label>
-                                                    <textarea class="form-control" cols="30" rows="5" placeholder="Notes"
-                                                        name="notes"></textarea>
-                                                </div> <!-- // end form group  -->
+                                                
 
 
 

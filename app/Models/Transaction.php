@@ -25,4 +25,7 @@ class Transaction extends Model
     public function Product(){
         return $this->belongsTo(Product::class,'product_id','id');
     }
+    public function TransactionProof(){
+        return $this->hasOne(TransactionProof::class,'invoice');
+    }
 }

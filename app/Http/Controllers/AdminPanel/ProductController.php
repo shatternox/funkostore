@@ -225,7 +225,7 @@ class ProductController extends Controller
 
         $images = MultiImg::where('product_id', $id)->get();
         foreach ($images as $image) {
-            @unlink($image->image_name);
+            // @unlink($image->image_name);
             MultiImg::where('product_id', $id)->delete();
         }
 
@@ -240,7 +240,7 @@ class ProductController extends Controller
 
     public function ProductDeleteImages($id){
         $images = MultiImg::findOrFail($id);
-        @unlink($images->image_name);
+        // @unlink($images->image_name);
 
         $images->delete();
 

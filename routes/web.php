@@ -34,6 +34,11 @@ use Illuminate\Support\Facades\Auth;
 Route::middleware(['auth:admin'])->group( function (){
 
     Route::get('/admin/dashboard', [AdminProfileController::class, 'AdminDashboard']);
+
+    Route::get('/transaction/approve/{invoice}',[AdminProfileController::class, 'ApproveTransaction'])->name('approve.transaction');
+    Route::get('/transaction/unapprove/{invoice}',[AdminProfileController::class, 'UnapproveTransaction'])->name('unapprove.transaction');
+
+
     Route::get('/admin/profile',[AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
     Route::get('/admin/profile/edit',[AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
     Route::post('/admin/profile/store',[AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
