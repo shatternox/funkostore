@@ -30,8 +30,8 @@
                             <tbody>
                                 @foreach($categories as $category)
                                 <tr>
-                                    <td><span><i class="{{ $category->category_icon }}"></i></span></td>
                                     <td>{{ $category->category_name }}</td>
+                                    <td><span><i class="{{ $category->category_icon }}"></i></span></td>
                                     <td>
                                         <a href="{{ route('category.edit', $category->id) }}" class="btn btn-info" title="Edit Brand"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('category.delete', $category->id) }}" id="delete" class="btn btn-danger" title="Delete Brand"><i class="fa fa-trash"></i></a>
