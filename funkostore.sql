@@ -56,24 +56,6 @@ INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_icon
 -- Dumping data for table `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(4, '2019_08_19_000000_create_failed_jobs_table', 1),
-(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(6, '2021_02_02_212221_create_admins_table', 1),
-(7, '2021_10_04_011541_create_sessions_table', 1),
-(8, '2021_10_08_145949_create_brands_table', 1),
-(9, '2021_10_14_160454_create_categories_table', 1),
-(10, '2021_10_15_162458_create_sub_categories_table', 1),
-(11, '2021_10_21_095838_create_products_table', 1),
-(12, '2021_10_21_100708_create_multi_imgs_table', 1),
-(13, '2021_12_02_111518_create_sliders_table', 1),
-(14, '2021_12_09_072711_create_carts_table', 1),
-(15, '2021_12_11_125729_create_transactions_table', 1),
-(16, '2021_12_11_141457_create_wishlists_table', 1),
-(17, '2021_12_21_074117_product_softdelete', 1);
 
 --
 -- Dumping data for table `multi_imgs`
@@ -119,12 +101,6 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `prod
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('bluFaYigNT6VCmCBydmVTgq8a4r3u6xquWK6HhPR', NULL, '192.168.1.248', 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieW5zcFVueDUwWllkTGc1cGhOdzVkNUR6Z2ViODdUWWRjUkFyclA5NiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xOTIuMTY4LjEuMTkyOjgwMDAvYWRtaW4vZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1641793443),
-('DJTMVIU8OvqtXDaGGce2D15u2Ptlo8hPXXJn5Apd', NULL, '192.168.1.248', 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY3lVSjNub0dHQmZnUmh2Yk5SeWdUUXA1RzNVb01GbnZkVnR3NTI5SCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xOTIuMTY4LjEuMTkyOjgwMDAvY2hlY2tvdXQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1641786328),
-('MfexXE1sQxvoLwdfwAxpRIZXYb1tOWsclv8DIjHi', NULL, '192.168.1.248', 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaE9uUHFOdWlYRTN1bmNzRktuSVNJeThBQWtGVERzcUVvMnY1YmtlUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xOTIuMTY4LjEuMTkyOjgwMDAvYWRtaW4vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1641790774),
-('NPHU37hCN25Jy5uTo6NZXzeiWgV10ORElVcNKM1X', NULL, '192.168.1.248', 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZWIycEI5ckhiN3liUHJRVDV3amZCVTVadkhYR2R2TmNVanU0UzI3VyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xOTIuMTY4LjEuMTkyOjgwMDAvYWRtaW4vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1641793443),
-('yF67ksMUrJpfVHLmZJQXCeaEH1y4Lf8noCnakMNM', 1, '192.168.1.248', 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNDBCMnZPM0l4Z21FcVFHQm1mdlh3cXh1NW1PWHpBTHVncm1jWk9QbyI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRwSHluLnpvSWxSOVJuWnR2NGVsTkllQlRiRUV5NE5UYWFJWWdwRjRRRm9DckxKSjk3WDVRdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly8xOTIuMTY4LjEuMTkyOjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1641793499);
 
 --
 -- Dumping data for table `sub_categories`
