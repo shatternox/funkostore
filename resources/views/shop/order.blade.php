@@ -73,29 +73,12 @@
                                                 @if ($tr->order_status == 'pending')
                                                     <span class="badge badge-pill badge-warning"
                                                         style="background: #800080;"> Pending </span>
-                                                @elseif($tr->order_status == 'confirm')
+                                                @elseif($tr->order_status == 'Finished')
                                                     <span class="badge badge-pill badge-warning"
-                                                        style="background: #0000FF;"> Confirm </span>
-
-                                                @elseif($tr->order_status == 'On Going')
-                                                    <span class="badge badge-pill badge-warning"
-                                                        style="background: #FFA500;"> Processing </span>
-
-                                                @elseif($tr->order_status == 'picked')
-                                                    <span class="badge badge-pill badge-warning"
-                                                        style="background: #808000;"> Picked </span>
-
-                                                @elseif($tr->order_status == 'shipped')
-                                                    <span class="badge badge-pill badge-warning"
-                                                        style="background: #808080;"> Shipped </span>
-
-                                                @elseif($tr->order_status == 'delivered')
-                                                    <span class="badge badge-pill badge-warning"
-                                                        style="background: #008000;"> Delivered </span>
-
+                                                        style="background: #0000FF;"> Confirmed </span>
                                                 @else
                                                     <span class="badge badge-pill badge-warning"
-                                                        style="background: #FF0000;"> Cancel </span>
+                                                        style="background: #FF0000;"> Rejected </span>
 
                                                 @endif
                                             </label>
