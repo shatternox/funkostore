@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionProof;
 use Illuminate\Http\Request;
@@ -34,33 +35,59 @@ class TransactionController extends Controller
         while(Transaction::where('invoice',$invoice)->first()){
             $invoice = strtoupper(uniqid('FNK'));
         }
-        
 
         $image = $request->file('transactionProof');
         $image_names = $invoice . '.' . $image->getClientOriginalExtension();
         $image_paths = 'upload/transaction_proofs/'. $image_names;
 
+        $message = "Transaction Success!";
+        $type = "success";
+
         foreach($cart_item as $cart){
-            Transaction::insert([
-                'product_id' => $cart->product->id,
-                'user_id' => auth()->user()->id,
-                'date_purchased' => $date_time,
-                'total_price' => $totalIn_cart,
-                'payment_type' => $request->payment_method,
-                'invoice' => $invoice,
-                'quantity' => $cart->quantity,
-                'order_status' => 'On Going',
-                'transaction_proof' => $image_paths,
-            ]);
+
+            $product = Product::findOrFail($cart->product_id);
+
+            if($product->product_qty - $cart->quantity < 0){
+            
+                $message = "Some item cannot fulfill the requested amount!";
+                $type = "warning";
+
+            } 
+            else {
+                
+                Transaction::insert([
+                    'product_id' => $cart->product->id,
+                    'user_id' => auth()->user()->id,
+                    'date_purchased' => $date_time,
+                    'total_price' => $totalIn_cart,
+                    'payment_type' => $request->payment_method,
+                    'invoice' => $invoice,
+                    'quantity' => $cart->quantity,
+                    'order_status' => 'On Going',
+                    'transaction_proof' => $image_paths,
+                ]);
+
+                $new_qty = $product->product_qty - $cart->quantity;
+                $product->update([
+                    'product_qty' => $new_qty,
+                ]);
+
+            }
+
             $cart->delete();
         }
 
-
         Image::make($image)->resize(917,1000)->save($image_paths);
 
-        return redirect('/');
+        $notification = array(
+            'message' => $message,
+            'alert-type' => $type
+        );
+
+        return redirect('/')->with($notification);
         
     }
+
 
     public function orderDetails(Request $request){
         $orderDetails = Transaction::where('invoice',$request->inv)->where('user_id',auth()->user()->id)->first();

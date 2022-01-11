@@ -70,7 +70,7 @@
                                         <td>
                                             <label for="">
 
-                                                @if ($tr->order_status == 'pending')
+                                                @if ($tr->order_status == 'On Going')
                                                     <span class="badge badge-pill badge-warning"
                                                         style="background: #800080;"> Pending </span>
                                                 @elseif($tr->order_status == 'Finished')

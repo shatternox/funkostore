@@ -42,12 +42,6 @@ class CartController extends Controller
                 'quantity'=>$request->quantity + $exist->quantity
             ]);
 
-            $new_qty = $product->product_qty - $request->quantity;
-            $product->update([
-                'product_qty' => $new_qty,
-            ]);
-
-
         }
         else{
             Cart::insert([
@@ -71,15 +65,6 @@ class CartController extends Controller
         $exist = Cart::where('user_id',$userid)->where('id',$cid)->first();
         if ($exist){
             $exist->delete();
-
-            $product = Product::findOrFail($exist->product_id);
-
-            $new_qty = $product->product_qty + $exist->quantity;
-
-            $product->update([
-                'product_qty' => $new_qty,
-            ]);
-
         }
 
         $notification = array(
