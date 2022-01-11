@@ -21,45 +21,25 @@ SET time_zone = "+00:00";
 -- Database: `funkostore`
 --
 
---
--- Dumping data for table `admins`
---
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', '2021-12-07 22:55:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'AZ4EzFXL0zU2yMKFnEtAfcIgvhtS2F09f2TOcmsohouoyAm3UFWx6RMNo8nu', NULL, '1721536458281747.jpeg', '2021-12-07 22:55:08', '2022-01-09 20:25:05');
 
---
--- Dumping data for table `brands`
---
 
 INSERT INTO `brands` (`id`, `brand_name`, `brand_slug`, `brand_image`, `created_at`, `updated_at`) VALUES
 (1, 'Funko Home', 'funko-home', 'upload/brand/1718556465928843.png', NULL, NULL),
 (2, 'Nendoroid', 'nendoroid', 'upload/brand/1718556524481719.png', NULL, NULL);
 
---
--- Dumping data for table `carts`
---
 
 INSERT INTO `carts` (`id`, `user_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
 (29, 1, 8, 1, NULL, NULL);
 
---
--- Dumping data for table `categories`
---
 
 INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_icon`, `created_at`, `updated_at`) VALUES
 (1, 'Cartoon', 'cartoon', 'fab fa-angellist', NULL, NULL),
 (2, 'Anime', 'anime', 'fas fa-grin-alt', NULL, NULL),
 (3, 'Movie', 'movie', 'fas fa-film', NULL, NULL);
 
---
--- Dumping data for table `migrations`
---
-
-
---
--- Dumping data for table `multi_imgs`
---
 
 INSERT INTO `multi_imgs` (`id`, `product_id`, `image_name`, `created_at`, `updated_at`) VALUES
 (1, 1, 'upload/product/multi_image/1718557040357983.png', '2021-12-07 23:08:30', NULL),
@@ -81,21 +61,8 @@ INSERT INTO `multi_imgs` (`id`, `product_id`, `image_name`, `created_at`, `updat
 (38, 6, 'upload/product/multi_image/1718561299555958.jpg', '2021-12-08 00:16:12', NULL),
 (39, 6, 'upload/product/multi_image/1718561299744420.jpg', '2021-12-08 00:16:12', NULL),
 (40, 6, 'upload/product/multi_image/1718561299933442.jpg', '2021-12-08 00:16:13', NULL),
-(41, 6, 'upload/product/multi_image/1718561300148935.jpg', '2021-12-08 00:16:13', NULL),
-(42, 9, 'upload/product/multi_image/1721560397806458.PNG', '2022-01-10 02:45:35', NULL),
-(43, 10, 'upload/product/multi_image/1721561520651734.PNG', '2022-01-10 03:03:26', NULL),
-(44, 11, 'upload/product/multi_image/1721561701221458.jpg', '2022-01-10 03:06:18', NULL),
-(45, 12, 'upload/product/multi_image/1721561839540372.PNG', '2022-01-10 03:08:30', NULL),
-(46, 13, 'upload/product/multi_image/1721562069596767.PNG', '2022-01-10 03:12:10', NULL),
-(47, 14, 'upload/product/multi_image/1721562198224481.PNG', '2022-01-10 03:14:12', NULL),
-(48, 15, 'upload/product/multi_image/1721563340198336.PNG', '2022-01-10 03:32:21', NULL),
-(49, 16, 'upload/product/multi_image/1721563458528521.PNG', '2022-01-10 03:34:14', NULL),
-(50, 17, 'upload/product/multi_image/1721564657618295.PNG', '2022-01-10 03:53:18', NULL),
-(51, 18, 'upload/product/multi_image/1721564771729677.PNG', '2022-01-10 03:55:07', NULL);
+(41, 6, 'upload/product/multi_image/1718561300148935.jpg', '2021-12-08 00:16:13', NULL);
 
---
--- Dumping data for table `products`
---
 
 INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `product_name`, `product_slug`, `product_code`, `product_qty`, `product_tags`, `selling_price`, `discount`, `short_description`, `long_description`, `product_thumbnail`, `hot_deals`, `featured`, `special_offer`, `special_deals`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, 2, 'Thanos Gingerbread - Marvel', 'thanos-gingerbread---marvel', 'MV-029', 30, 'Lorem,Ipsum,Amet', '15', NULL, '<p>Lorem ipsum dolor sit amet,&nbsp;</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718557039863010.png', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:08:30', NULL, NULL),
@@ -118,20 +85,12 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `prod
 (18, 1, 3, 3, 'The Winter Soldier', 'the-winter-soldier', '838', 2, 'Marvel', '49.99', '15', '<h1>POP Marvel: Year of The Shield - The Winter Soldier</h1>', '<ul>\r\n	<li>Funko presents Marvel Year of the Shield, the subscription collectible series exclusively available here. This series is made to celebrate heroes who wield shields to protect the innocent from villains whether they appear in the Marvel comics, movies, or both.</li>\r\n	<li>Expand your Marvel collection by grabbing the first figure in our Year of the Shield series. A new figure is released every other month, starting with our first figure of this 8-part series, The Winter Soldier.</li>\r\n	<li>This Pop! features Bucky Barnes as the Winter Soldier, holding Captain America&rsquo;s battle worn shield as seen in their fight scene from the movie Captain America: The Winter Soldier.</li>\r\n	<li>Bucky Barnes was a close friend to Captain America (Steve Rogers) when they were growing up, but at some point, Bucky was captured and brainwashed into becoming the Winter Soldier. Your Marvel collection would not be complete without the Winter Soldier to stand beside Captain America. Cap will help Bucky recover his memories.</li>\r\n	<li>Vinyl figure is approximately 3.75-inches tall and comes in a window display box.</li>\r\n</ul>', 'upload/product/thumbnail/1721564771443747.PNG', 1, NULL, NULL, NULL, 1, '2022-01-10 03:55:06', NULL, NULL);
 
 
-
---
--- Dumping data for table `sub_categories`
---
-
 INSERT INTO `sub_categories` (`id`, `category_id`, `subcategory_name`, `subcategory_slug`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Nendo', 'sub-1', NULL, '2021-12-21 09:36:05'),
 (2, 1, 'Mini Funko', 'sub-2', NULL, '2021-12-21 09:36:16'),
 (3, 3, 'Action', 'sub-3', NULL, '2021-12-21 09:36:25');
 
-
---
--- Dumping data for table `users`
---
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
