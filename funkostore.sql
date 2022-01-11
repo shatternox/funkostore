@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 05:38 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Jan 10, 2022 at 06:55 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sxcommerce`
+-- Database: `funkostore`
 --
 
 --
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2021-12-07 22:55:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'I2mmL4Xsbz', NULL, NULL, '2021-12-07 22:55:08', '2021-12-07 22:55:08');
+(1, 'Admin', 'admin@gmail.com', '2021-12-07 22:55:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'AZ4EzFXL0zU2yMKFnEtAfcIgvhtS2F09f2TOcmsohouoyAm3UFWx6RMNo8nu', NULL, '1721536458281747.jpeg', '2021-12-07 22:55:08', '2022-01-09 20:25:05');
 
 --
 -- Dumping data for table `brands`
@@ -37,6 +37,13 @@ INSERT INTO `brands` (`id`, `brand_name`, `brand_slug`, `brand_image`, `created_
 (2, 'Nendoroid', 'nendoroid', 'upload/brand/1718556524481719.png', NULL, NULL);
 
 --
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `user_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(29, 1, 8, 1, NULL, NULL);
+
+--
 -- Dumping data for table `categories`
 --
 
@@ -44,6 +51,11 @@ INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_icon
 (1, 'Cartoon', 'cartoon', 'fab fa-angellist', NULL, NULL),
 (2, 'Anime', 'anime', 'fas fa-grin-alt', NULL, NULL),
 (3, 'Movie', 'movie', 'fas fa-film', NULL, NULL);
+
+--
+-- Dumping data for table `migrations`
+--
+
 
 --
 -- Dumping data for table `multi_imgs`
@@ -82,8 +94,13 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `prod
 (4, 1, 3, 3, 'RED MILLER - MANDY', 'red-miller---mandy', 'RD78', 20, 'Lorem,Ipsum,Amet', '12', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718557561680822.png', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:16:48', NULL, NULL),
 (5, 1, 3, 3, 'DOC WITH HELMET - BACK TO THE FUTURE', 'doc-with-helmet---back-to-the-future', 'DOC78', 60, 'Lorem,Ipsum,Amet', '12', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718557722867748.png', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:19:21', NULL, NULL),
 (6, 2, 2, 1, 'Nendoroid Itachi Uchiha: Anbu Black Ops Ver', 'nendoroid-itachi-uchiha:-anbu-black-ops-ver', 'NAR090', 10, 'Lorem,Ipsum,Amet', '57', NULL, '<p>Lorem ipsum dolor sit amet,</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718558009993712.jpg', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:23:55', NULL, NULL),
-(7, 2, 2, 1, 'Roxy Migurdia', 'roxy-migurdia', 'ROX8711', 20, 'Lorem,Ipsum,Amet', '200', NULL, '<p>Lorem ipsum dolor sit amet,</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718558132749998.jpg', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:25:52', NULL, NULL),
-(8, 2, 2, 1, 'Nendoroid Doll Nezuko Kamado', 'nendoroid-doll-nezuko-kamado', 'DS1667', 10, 'Lorem,Ipsum,Amet', '73', NULL, '<p>Lorem ipsum dolor sit amet,</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718558236023591.jpg', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:27:31', NULL, NULL);
+(7, 2, 2, 1, 'Roxy Migurdia', 'roxy-migurdia', 'ROX8711', 30, 'Lorem,Ipsum,Amet', '200', NULL, '<p>Lorem ipsum dolor sit amet,</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718558132749998.jpg', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:25:52', '2022-01-09 20:06:31', NULL),
+(8, 2, 2, 1, 'Nendoroid Doll Nezuko Kamado', 'nendoroid-doll-nezuko-kamado', 'DS1667', 11, 'Lorem,Ipsum,Amet', '73', NULL, '<p>Lorem ipsum dolor sit amet,</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus mauris. Duis accumsan diam eget eleifend dapibus. Praesent a egestas urna. Vivamus quis lectus sed nisl scelerisque bibendum. Nam varius, dolor sit amet dictum feugiat, quam metus eleifend nulla, a mollis ante leo sed mauris. Nunc sed lobortis tellus, et condimentum dui. Maecenas ac lectus turpis. Nulla at efficitur dui. Morbi non maximus lacus. Nulla facilisi. Vivamus luctus, lorem vitae ultrices convallis, diam est ornare massa, in scelerisque purus nibh ac mauris. Nam dictum sollicitudin tortor, quis volutpat lectus maximus vitae. Phasellus porta leo non dui consequat aliquet. Vivamus in ante nec augue tincidunt posuere. Aliquam odio tortor, porta ac vestibulum tincidunt, fermentum eu urna. In convallis mauris sed tellus luctus, sed accumsan est feugiat.</p>', 'upload/product/thumbnail/1718558236023591.jpg', NULL, NULL, NULL, NULL, 1, '2021-12-07 23:27:31', '2022-01-09 22:39:19', NULL);
+
+--
+-- Dumping data for table `sessions`
+--
+
 
 --
 -- Dumping data for table `sub_categories`
@@ -93,6 +110,45 @@ INSERT INTO `sub_categories` (`id`, `category_id`, `subcategory_name`, `subcateg
 (1, 2, 'Nendo', 'sub-1', NULL, '2021-12-21 09:36:05'),
 (2, 1, 'Mini Funko', 'sub-2', NULL, '2021-12-21 09:36:16'),
 (3, 3, 'Action', 'sub-3', NULL, '2021-12-21 09:36:25');
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `product_id`, `user_id`, `quantity`, `date_purchased`, `total_price`, `payment_type`, `invoice`, `order_status`, `transaction_proof`, `created_at`, `updated_at`) VALUES
+(1, 7, 1, 1, '2022-01-10 03:35:15', 273, 'visa', 'FNK61DB9896A3549', 'Rejected', 'upload/transaction_proofs/FNK61DB9896A3549.php', NULL, '2022-01-09 20:35:15'),
+(2, 8, 1, 1, '2022-01-10 03:35:15', 273, 'visa', 'FNK61DB9896A3549', 'Rejected', 'upload/transaction_proofs/FNK61DB9896A3549.php', NULL, '2022-01-09 20:35:15'),
+(3, 8, 1, 1, '2022-01-10 03:35:18', 73, '<script> alert(1) </script>', 'FNK61DB9DB90DD82', 'Rejected', 'upload/transaction_proofs/FNK61DB9DB90DD82.jpg', NULL, '2022-01-09 20:35:18'),
+(4, 5, 1, 1, '2022-01-10 03:35:20', 12, 'paypal', 'FNK61DBA2C9A50EC', 'Rejected', 'upload/transaction_proofs/FNK61DBA2C9A50EC.jpg', NULL, '2022-01-09 20:35:20'),
+(5, 7, 1, 1, '2022-01-10 03:35:23', 200, 'visa', 'FNK61DBA8B6B2609', 'Rejected', 'upload/transaction_proofs/FNK61DBA8B6B2609.jpeg', NULL, '2022-01-09 20:35:23'),
+(6, 5, 1, 1, '2022-01-09 20:35:51', 12, 'visa', 'FNK61DBA997E227F', 'On Going', 'upload/transaction_proofs/FNK61DBA997E227F.jpeg', NULL, NULL),
+(7, 6, 1, 1, '2022-01-09 20:39:45', 57, 'visa', 'FNK61DBAA81133F0', 'On Going', 'upload/transaction_proofs/FNK61DBAA81133F0.php', NULL, NULL),
+(8, 5, 1, 1, '2022-01-09 20:43:38', 12, 'visa', 'FNK61DBAB6A09D15', 'On Going', 'upload/transaction_proofs/FNK61DBAB6A09D15.php', NULL, NULL),
+(9, 1, 1, 1, '2022-01-09 20:47:38', 15, 'visa', 'FNK61DBAC5ADFFD7', 'On Going', 'upload/transaction_proofs/FNK61DBAC5ADFFD7.php', NULL, NULL),
+(10, 1, 1, 1, '2022-01-09 20:49:15', 15, 'visa', 'FNK61DBACBB4FB1B', 'On Going', 'upload/transaction_proofs/FNK61DBACBB4FB1B.php', NULL, NULL),
+(11, 2, 1, 1, '2022-01-09 21:08:25', 15, 'visa', 'FNK61DBB139ED3B0', 'On Going', 'upload/transaction_proofs/FNK61DBB139ED3B0.php', NULL, NULL),
+(12, 2, 1, 1, '2022-01-09 21:09:53', 15, 'visa', 'FNK61DBB191E547C', 'On Going', 'upload/transaction_proofs/FNK61DBB191E547C.php', NULL, NULL),
+(13, 1, 1, 1, '2022-01-09 21:14:59', 15, 'paypal', 'FNK61DBB2C396E52', 'On Going', 'upload/transaction_proofs/FNK61DBB2C396E52.php', NULL, NULL),
+(14, 1, 1, 1, '2022-01-09 21:16:47', 27, 'paypal', 'FNK61DBB32FC5BBB', 'On Going', 'upload/transaction_proofs/FNK61DBB32FC5BBB.php', NULL, NULL),
+(15, 5, 1, 1, '2022-01-09 21:16:47', 27, 'paypal', 'FNK61DBB32FC5BBB', 'On Going', 'upload/transaction_proofs/FNK61DBB32FC5BBB.php', NULL, NULL),
+(16, 6, 1, 1, '2022-01-10 05:43:30', 57, 'paypal', 'FNK61DBB5F44D82D', 'Finished', 'upload/transaction_proofs/FNK61DBB5F44D82D.pgif', NULL, '2022-01-09 22:43:30'),
+(17, 2, 1, 1, '2022-01-09 21:34:29', 15, 'visa', 'FNK61DBB755266A8', 'On Going', 'upload/transaction_proofs/FNK61DBB755266A8.php', NULL, NULL),
+(18, 5, 1, 1, '2022-01-09 21:38:15', 12, 'visa', 'FNK61DBB8375D10B', 'On Going', 'upload/transaction_proofs/FNK61DBB8375D10B.jpg', NULL, NULL),
+(19, 8, 1, 1, '2022-01-09 21:39:13', 73, 'visa', 'FNK61DBB87197D4F', 'On Going', 'upload/transaction_proofs/FNK61DBB87197D4F.php', NULL, NULL),
+(20, 7, 1, 1, '2022-01-09 21:40:02', 200, 'visa', 'FNK61DBB8A201AB5', 'On Going', 'upload/transaction_proofs/FNK61DBB8A201AB5.jpg', NULL, NULL),
+(21, 6, 1, 1, '2022-01-09 21:51:27', 57, 'visa', 'FNK61DBBB4F400B5', 'On Going', 'upload/transaction_proofs/FNK61DBBB4F400B5.', NULL, NULL),
+(22, 6, 1, 1, '2022-01-09 21:53:30', 57, 'visa', 'FNK61DBBBCA85697', 'On Going', 'upload/transaction_proofs/FNK61DBBBCA85697.php', NULL, NULL),
+(23, 7, 1, 1, '2022-01-09 21:54:08', 200, 'visa', 'FNK61DBBBF0760F0', 'On Going', 'upload/transaction_proofs/FNK61DBBBF0760F0.jpg', NULL, NULL),
+(24, 8, 1, 1, '2022-01-09 21:55:05', 73, 'visa', 'FNK61DBBC298EE81', 'On Going', 'upload/transaction_proofs/FNK61DBBC298EE81.php%20', NULL, NULL),
+(25, 6, 1, 1, '2022-01-09 21:56:32', 57, 'visa', 'FNK61DBBC803D4A4', 'On Going', 'upload/transaction_proofs/FNK61DBBC803D4A4.jpg', NULL, NULL),
+(26, 8, 1, 1, '2022-01-09 21:58:48', 73, 'visa', 'FNK61DBBD085F6CC', 'On Going', 'upload/transaction_proofs/FNK61DBBD085F6CC.php\'', NULL, NULL);
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, '</strong> !@#$%^&*()_+:\";\'%0a<script> alert(1) </script> <strong>', 'asdf@gmail.com', 'asdfasdf', NULL, '$2y$10$pHyn.zoIlR9RnZtv4elNIeBTbEEy4NTaaIYgpF4QFoCrLJJ97X5Qu', NULL, NULL, NULL, NULL, '1721536825894703.jpeg', '2021-12-26 22:49:10', '2022-01-09 20:54:03');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

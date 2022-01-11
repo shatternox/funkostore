@@ -91,34 +91,6 @@
                                             <!-- already-registered-login -->
                                             <div class="col-md-6 col-sm-6 already-registered-login">
 
-
-                                            
-
-
-                                                <div class="form-group">
-                                                    <h5><b>Provinsi Select</b> <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <select name="district_id" class="form-control">
-                                                            <option value="" selected="" disabled="">Select District
-                                                            </option>
-
-                                                        </select>
-
-                                                    </div>
-                                                </div> <!-- // end form group -->
-
-
-                                                <div class="form-group">
-                                                    <h5><b>Kota Select</b> <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <select name="state_id" class="form-control">
-                                                            <option value="" selected="" disabled="">Select State</option>
-
-                                                        </select>
-
-                                                    </div>
-                                                </div> <!-- // end form group -->
-
                                                 <div class="form-group">
                                                     <h5><b>Upload bukti transaksi</b> <span class="text-danger">*</span></h5>
                                                     <div class="controls">
