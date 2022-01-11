@@ -61,24 +61,6 @@
                                                     </div> <!-- // end form group  -->
 
 
-                                                    <div class="form-group">
-                                                        <label class="info-title" for="exampleInputEmail1"><b>Phone</b>
-                                                            <span>*</span></label>
-                                                        <input type="number" name="shipping_phone"
-                                                            class="form-control unicase-form-control text-input"
-                                                            id="exampleInputEmail1" placeholder="Phone"
-                                                            value="{{ Auth::user()->phone }}" required="">
-                                                    </div> <!-- // end form group  -->
-
-
-                                                    <div class="form-group">
-                                                        <label class="info-title" for="exampleInputEmail1"><b>Post Code
-                                                            </b> <span>*</span></label>
-                                                        <input type="text" name="post_code"
-                                                            class="form-control unicase-form-control text-input"
-                                                            id="exampleInputEmail1" placeholder="Post Code">
-                                                    </div> <!-- // end form group  -->
-
 
 
                                             </div>

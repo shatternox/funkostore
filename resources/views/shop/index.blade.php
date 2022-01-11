@@ -49,7 +49,6 @@ Funkostore
                         <div class="col col-xs-7">
                           <div class="product-info">
                             <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                            <div class="rating rateit-small"></div>
                             <div class="product-price"> <span class="price">${{$product->selling_price}}</span> </div>
                             <!-- /.product-price --> 
                             
@@ -108,7 +107,6 @@ Funkostore
                         <div class="col col-xs-7">
                           <div class="product-info">
                             <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                            <div class="rating rateit-small"></div>
                             <div class="product-price"> <span class="price"> ${{$product->selling_price}} </span> </div>
                             <!-- /.product-price --> 
                             
@@ -212,7 +210,6 @@ Funkostore
                           
                           <div class="product-info text-left">
                             <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                            <div class="rating rateit-small"></div>
                             <div class="description"></div>
 
                             @if ($product->discount == NULL)
@@ -293,7 +290,6 @@ Funkostore
                         
                         <div class="product-info text-left">
                           <h3 class="name"><a href="{{ url('product/details/' . $product->id) }}">{{$product->product_name}}</a></h3>
-                          <div class="rating rateit-small"></div>
                           <div class="description"></div>
                           <div class="product-price"> <span class="price"> ${{$product->selling_price}} </span> <span class="price-before-discount">${{$product->selling_price}}</span> </div>
                           <!-- /.product-price --> 
@@ -411,7 +407,6 @@ Funkostore
                 
                 <div class="product-info text-left">
                   <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                  <div class="rating rateit-small"></div>
                   <div class="description"></div>
 
                   @if ($product->discount == NULL)
@@ -498,7 +493,6 @@ Funkostore
                 
                 <div class="product-info text-left">
                   <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                  <div class="rating rateit-small"></div>
                   <div class="description"></div>
 
                   @if ($product->discount == NULL)
@@ -581,7 +575,6 @@ Funkostore
                 
                 <div class="product-info text-left">
                   <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                  <div class="rating rateit-small"></div>
                   <div class="description"></div>
 
                   @if ($product->discount == NULL)
@@ -667,7 +660,6 @@ Funkostore
                 
                 <div class="product-info text-left">
                   <h3 class="name"><a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}">{{$product->product_name}}</a></h3>
-                  <div class="rating rateit-small"></div>
                   <div class="description"></div>
 
                   @if ($product->discount == NULL)
