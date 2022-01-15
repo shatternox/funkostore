@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\TransactionProof;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class AdminProfileController extends Controller
 {
@@ -82,7 +83,9 @@ class AdminProfileController extends Controller
 
             @unlink(public_path('upload/profile_images/'. $data->profile_photo_path));
 
-            $file->move(public_path('upload/profile_images'), $complete_file_name);
+            Image::make($file)->resize(500,500)->save('upload/profile_images/'.$complete_file_name);
+
+            // $file->move(public_path('upload/profile_images'), $complete_file_name);
             $data['profile_photo_path'] = $complete_file_name;
         }    
         $data->save();

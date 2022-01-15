@@ -73,7 +73,7 @@ class SliderController extends Controller
         if($request->file('slider_image')){
             $image = $request->file('slider_image');
             $image_name = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(300,300)->save('upload/slider/'. $image_name);
+            Image::make($image)->resize(870,370)->save('upload/slider/'. $image_name);
             $image_path = 'upload/slider/'. $image_name;
             @unlink($slider->slider_image);
 

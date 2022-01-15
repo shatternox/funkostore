@@ -143,8 +143,6 @@ Route::post('/search',[IndexController::class, 'ProductSearch'])->name('product.
 Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class, 'SubcategoryProduct']);
 
 
-
-
 Route::middleware(['auth'])->group( function (){
 
     Route::get('mycart/',[CartController::class, 'view'])->name('product.cart');
