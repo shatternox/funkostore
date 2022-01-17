@@ -26,6 +26,3 @@
                     .
 
 ```
-
-## Bacod anying
-## Bacod yiying
