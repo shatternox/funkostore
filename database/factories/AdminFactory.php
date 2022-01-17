@@ -26,7 +26,7 @@ class AdminFactory extends Factory
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password' => '$2a$10$L0yecsJs5bUb5aT684mEhO8vkdEEeymdnJtrdUJ4Wr4.wgKAJOEje',
             'remember_token' => Str::random(10),
         ];
     }
