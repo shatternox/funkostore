@@ -1,6 +1,44 @@
 ## Funkostore
 
-### Inilah awal kisah cinta kita
+Kelompok:
+1. Ardian Danny (2301847303)
+2. Excel Antonio (2301872766)
+3. Felix Alexander (2301859253)
+4. Fernanda Darmasaputra (2301861812)
+5. Stanley Halim (2301859146)
+6. Stephanley Herman (2301866113)
+
+
+Cara mendeploy aplikasi
+
+1. Pastikan PHP version 7 ke atas terinstall
+2. Pastikan composer terinstall
+3. Pastikan MySQL sudah terinstall
+
+```
+git clone https://github.com/shatternox/funkostore.git
+```
+
+4. Buat file .env, contohnya bisa dilihat di .env.example (Terutama bagian database)
+
+
+```
+composer install
+```
+```
+php artisan migrate
+```
+
+5. Buat database dan import file SQL yang sudah disediakan di github sebagai sumber data.
+
+```
+php artisan key:generate
+```
+
+```
+php artisan serve
+```
+
 ```
                   /|_
         ........  /   |_ ........
