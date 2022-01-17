@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class IndexController extends Controller
 {
@@ -22,7 +23,7 @@ class IndexController extends Controller
 
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
-        $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
         $featured = Product::where('featured', 1)->where('status', 1)->orderBy('id', 'DESC')->get();
         $hotdeals = Product::where('hot_deals', 1)->where('status', 1)->where('discount', '!=', NULL)->limit(3)->orderBy('id', 'DESC')->get();
         $specialoffers = Product::where('special_offer', 1)->where('status', 1)->limit(3)->orderBy('id', 'DESC')->get();
@@ -88,7 +89,8 @@ class IndexController extends Controller
 
             @unlink(public_path('upload/profile_images/'. $data->profile_photo_path));
 
-            $file->move(public_path('upload/profile_images'), $complete_file_name);
+            Image::make($file)->resize(500,500)->save('upload/profile_images/'.$complete_file_name);
+
             $data['profile_photo_path'] = $complete_file_name;
         }    
         $data->save();
