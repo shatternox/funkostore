@@ -127,11 +127,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('dashboard', compact('user'));
 })->name('dashboard');
 
-Route::get('/user/logout',[IndexController::class, 'UserLogout'])->name('user.logout');
-Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.profile');
-Route::post('/user/profile/store',[IndexController::class, 'UserProfileStore'])->name('user.profile.store');
-Route::get('/user/profile/changepassword',[IndexController::class, 'UserChangePassword'])->name('user.change.password');
-Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdatePassword'])->name('user.update.password');
+
 
 
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
@@ -159,6 +155,12 @@ Route::middleware(['auth'])->group( function (){
     Route::get('/order/',[TransactionController::class, 'order'])->name('product.order');
     Route::get('/order/details/{inv}',[TransactionController::class, 'orderDetails']);
     Route::post('/order/',[TransactionController::class, 'addOrder'])->name('product.addOrder');
+
+    Route::get('/user/logout',[IndexController::class, 'UserLogout'])->name('user.logout');
+    Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.profile');
+    Route::post('/user/profile/store',[IndexController::class, 'UserProfileStore'])->name('user.profile.store');
+    Route::get('/user/profile/changepassword',[IndexController::class, 'UserChangePassword'])->name('user.change.password');
+    Route::post('/user/profile/changepassword',[IndexController::class, 'UserUpdatePassword'])->name('user.update.password');
 });
 
 
