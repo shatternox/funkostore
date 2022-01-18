@@ -167,20 +167,20 @@ Sub-category
                                     <input type="hidden" name="pid" value="{{$product->id}}">
                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                                   </form>
-                                  <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                  <button class="btn btn-primary cart-btn" type="submit">Add to cart</button>
                                 </li>
                                 <li class="wishlist"> 
 
-<form action="{{route('product.addtowish')}}" method="post">
-    @csrf
-    <input type="hidden" value="1" name="quantity">
-    <input type="hidden" name="pid" value="{{$product->id}}">
-    <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Wish"> <i class="fa fa-heart"></i> </button>
-  </form>
-  <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
+                              <form action="{{route('product.addtowish')}}" method="post">
+                                  @csrf
+                                  <input type="hidden" value="1" name="quantity">
+                                  <input type="hidden" name="pid" value="{{$product->id}}">
+                                  <button data-toggle="tooltip" class="btn btn-primary icon" type="submit" title="Add Wish"> <i class="fa fa-heart"></i> </button>
+                                </form>
+                                <button class="btn btn-primary cart-btn" type="submit">Add to wishlist</button>
 
-</li>
-                              
+                              </li>
+                                                            
                             </ul>
                           </div>
                           <!-- /.action --> 
@@ -246,7 +246,7 @@ Sub-category
                                         @csrf
                                         <input type="hidden" value="1" name="quantity">
                                         <input type="hidden" name="pid" value="{{$product->id}}">
-                                        <button class="btn btn-primary cart-btn" type="button">Add to wishlist</button>
+                                        <button class="btn btn-primary cart-btn" type="submit">Add to wishlist</button>
                                       </form>
                                       
 
